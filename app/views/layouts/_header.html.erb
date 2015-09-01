@@ -1,0 +1,21 @@
+<nav class="navbar navbar-inverse">
+      <ul class="nav navbar-nav navbar-right">
+          <li class="navbar-header"><%= link_to 'Inicio', root_path, class: 'navbar-brand' %></li>
+          <li><%= link_to 'Products', products_path %></li>
+        <% if current_user %>
+            <li><%= link_to "Usuarios", users_path %></li>
+            <li role="presentation" class="dropdown">
+              <a  class="dropdown-toggle" data-toggle="dropdown" role="button"
+              aria-haspopup="true" aria-expanded="false">Bienvenido <%= current_user.name.capitalize %> <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to 'Inbox', conversations_path %></li>
+                <li><%= link_to 'Actualizar mis Datos', current_user %></li>
+                <li><%= link_to 'Cerrar Sesión', logout_path, method: :delete %></li>
+              </ul>
+            </li>
+        <% else %>
+          <li><%= link_to 'Registrate', signup_path %></li>
+          <li><%= link_to 'Ingresar', login_path %></li>
+        <% end %>
+      </ul>
+</nav>

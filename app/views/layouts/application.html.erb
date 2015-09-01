@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SinStock</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div id="wrap">
+
+    <%= render 'layouts/header' %>
+
+    <% if current_user %>
+      <% if current_user.activation_state == "pending" %>
+        <div class="alert alert-danger" style="text-align:center">Please activate your account.</div>
+      <% end %>
+    <% end %>
+    <div class="container">
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>" style="text-align:center">
+          <%= value %>
+        </div>
+      <% end %>
+
+      <%= yield %>
+    </div>
+  </div>
+
+    <% if logged_in? %>
+    <%= render 'shared/current_users' %>
+    <% end %>
+
+    <%= render 'layouts/footer' %>
+
+</body>
+</html>
