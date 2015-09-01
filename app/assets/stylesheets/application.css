@@ -13,3 +13,28 @@
  *= require_tree .
  *= require_self
  */
+
+
+
+
+
+
+
+
+
+
+
+/* Esconde en Moviles */
+@media (max-width: 1000px) and (min-width: 50px) {
+  .oculto-en-moviles {
+  display: none !important;
+  }
+}
+
+
+/* Esconde en escritorio */
+@media (min-width: 1001px) {
+  .oculto-en-escritorio {
+  display: none !important;
+  }
+}

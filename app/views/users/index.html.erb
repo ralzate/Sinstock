@@ -1,14 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Users</h1>
+<h1>Listado de Usuarios</h1>
 <%= will_paginate %>
-<table class="table table-striped">
+<table class="table table-bordered table-hover table-striped">
   <thead>
     <tr>
-      <th></th>
-      <th>Name</th>
+      <th>Foto</th>
+      <th>Nombre</th>
       <th>Email</th>
-      <th colspan="2"></th>
+      <th colspan="2">Opciones</th>
     </tr>
   </thead>
 
@@ -16,15 +16,14 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= image_tag(user.picture, size:'40x40') %></td> 
-        <td><%= user.name %></td>
+        <td><%= user.first_name %></td>
         <td><%= user.email %></td>
         <td class="col-md-4 btn-group" role="group" aria-label="...">
-                <button type="button" class="btn btn-default"><%= link_to 'Show', user %></button>
-                <% if user == current_user || current_user.admin %>
-                <button type="button" class="btn btn-default"><%= link_to 'Edit', edit_user_path(user) %></button>
-                <button type="button" class="btn btn-default"><%= link_to 'Destroy', user,
-                                                                  method: :delete, data: { confirm: 'Are you sure?' } %></button>
-                <% end %>
+          <%= link_to image_tag('Options/show.png'), user, :class => 'btn btn-link', :title => "Mostrar" %>
+          <% if user == current_user || current_user.admin %>
+            <%= link_to image_tag('Options/edit.png'), edit_user_path(user), :class => 'btn btn-link', :title => "Editar" %>
+            <%= link_to image_tag('Options/delete.png'), user, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-link', :title => "Eliminar" %>
+          <% end %>
         </td>
       </tr>
     <% end %>

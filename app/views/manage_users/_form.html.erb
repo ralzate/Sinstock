@@ -1,0 +1,58 @@
+
+
+
+
+
+
+
+<div class="oculto-en-moviles">
+
+<%= simple_form_for(@manage_user, :html => { :multipart => true, :remote => true }) do |f| %>
+
+<div class="user">
+  <div class="modal-header">
+    <h4 class="modal-title"><h3>Administracion Usuarios</h3></h4>
+  </div><br>
+  <div class="row">
+    <div class="col-md-4">
+      *Nombre:
+    </div>
+    <div class="col-md-6">
+      <%= f.input :user_id, :label => false,  :required => true %>
+    </div>
+    <div class="col-md-4">
+      *Rol:
+    </div>
+    <div class="col-md-6">
+      <%= f.input :rol_id, :label => false,  :required => true %>
+    </div>
+
+  </div>
+</div>
+<div class="modal-footer">
+  <%= f.submit "Guardar", :class => 'btn btn-primary' %>
+  <a href="#" class="btn btn-default" onclick="$.lazybox.close()">Cerrar</a>
+</div>
+
+
+<% end %>
+</div>
+
+<div class="oculto-en-escritorio">
+
+<%= simple_form_for(@manage_user) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :user_id %>sss
+    <%= f.input :rol_id %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+
+</div>
+
+

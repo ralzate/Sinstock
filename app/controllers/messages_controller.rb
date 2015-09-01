@@ -17,7 +17,7 @@ class MessagesController < ApplicationController
   def create
     @recipient = User.find(params[:user])
     current_user.send_message(@recipient, params[:body], params[:subject])
-    flash[:notice] = "Message has been sent!"
+    flash[:notice] = "¡El mensaje ha sido enviado!"
     redirect_to :conversations
   end
 end

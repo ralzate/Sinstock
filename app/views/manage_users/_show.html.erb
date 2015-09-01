@@ -1,0 +1,21 @@
+<%- model_class = ManageUser -%>
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="$.lazybox.close()">&times;</button>
+<div class="page-header">
+  <h2>post:<%= @manage_user.id %></h2>
+  <table class="table table-bordered table-hover" >
+    <thead>
+      <tr class="info">
+        <th>Nombre</th>
+        <th>Descripcion</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><p><%= @manage_user.user_id %></p></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="modal-footer">
+    <a href="#" class="btn btn-primary" onclick="$.lazybox.close()">Cerrar</a>
+  </div>
+</div>

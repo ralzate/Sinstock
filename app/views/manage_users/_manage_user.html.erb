@@ -1,0 +1,9 @@
+<tr id=<%= "manage_user_#{manage_user.id}" %>>
+	<td><%= link_to manage_user.id, edit_manage_user_path(manage_user), :remote => true %></td>
+	<td><%= manage_user.user_id %></td>
+	
+	<td>
+		<%= link_to  image_tag('view1.png'), manage_user, :remote => true,  :rel => "tooltip", :title => "Mostrar", :class => 'btn btn-link'%>
+		<%= link_to image_tag('editar1.png'), edit_manage_user_path(manage_user),  :remote => true,  :rel => "tooltip", :title => "Editar", :class => 'btn btn-link'%>
+	</td>
+</tr>

@@ -5,10 +5,13 @@ class User < ActiveRecord::Base
   before_save { self.email = email.downcase }
   mount_uploader :picture, PictureUploader
 
-  validates :password, presence: true, length: { minimum: 3 }, confirmation: true, if: :new_user?
-  validates :email, uniqueness: true, email_format: { message: 'has invalid format' }, uniqueness: {message: " Ya fue registrado "}
-  validates :name, presence: true, length: { minimum:4 }
+  validates :email, uniqueness: true, email_format: { message: ' Tiene un Formato invalido' }, uniqueness: {message: " Ya fue registrado "}
+  validates :first_name, :presence => { :message => "Por Favor Ingresa tu nombre"}
   validate :picture_size
+  validates_confirmation_of :password, :message => " Debe ser igual"
+
+
+
 
 
   class << self

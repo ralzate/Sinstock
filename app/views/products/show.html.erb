@@ -6,23 +6,23 @@
 </p>
 
 <p>
-  <strong>Description:</strong>
-  <%= @product.description %>
+  <strong>Descripcion:</strong>
+  <%= truncate(@product.description, length: 20) %>
 </p>
 
 <p>
   <strong>Image file:</strong>
-  <%= @product.image_file %>
+  <td><%= image_tag(@product.image_file, size:'40x40') %></td> 
 </p>
 
 <p>
-  <strong>Price:</strong>
+  <strong>Precio:</strong>
   <%= @product.price %>
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @product.user.name %>
+  <strong>Usuario:</strong>
+  <%= @product.user.first_name %>
 </p>
 <% if logged_in? %>
   <% if current_user.products.include?(@product) || current_user.admin %>
