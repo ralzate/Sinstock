@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150901211807) do
+ActiveRecord::Schema.define(version: 20150902203114) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,15 +96,27 @@ ActiveRecord::Schema.define(version: 20150901211807) do
   add_index "manage_users", ["user_id"], name: "index_manage_users_on_user_id", using: :btree
 
   create_table "products", force: :cascade do |t|
-    t.string   "title"
-    t.text     "description"
-    t.string   "image_file"
-    t.decimal  "price"
+    t.string   "name"
+    t.string   "description"
+    t.integer  "stock"
+    t.string   "reference"
+    t.integer  "type_product_id"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "quantity"
+    t.decimal  "price"
+    t.decimal  "unit_price"
+    t.integer  "state_product"
+    t.decimal  "total"
+    t.integer  "new_used"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
+  add_index "products", ["type_product_id"], name: "index_products_on_type_product_id", using: :btree
   add_index "products", ["user_id"], name: "index_products_on_user_id", using: :btree
 
   create_table "roles", force: :cascade do |t|
@@ -191,5 +203,6 @@ ActiveRecord::Schema.define(version: 20150901211807) do
   add_foreign_key "mailboxer_receipts", "mailboxer_notifications", column: "notification_id", name: "receipts_on_notification_id"
   add_foreign_key "manage_users", "roles"
   add_foreign_key "manage_users", "users"
+  add_foreign_key "products", "type_products"
   add_foreign_key "products", "users"
 end

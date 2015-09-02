@@ -1,5 +1,5 @@
-<%- model_class = ManageUser -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize %></h1>
-</div>
-<%= render :partial => 'form' %>
+<h3>Datos Administración Usuarios</h3>
+
+<%= render 'form' %>
+
+<%= link_to 'Atras', manage_users_path, :class => 'btn btn-default return' %>

@@ -1,34 +1,26 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listado de Usuarios</h1>
-<%= will_paginate %>
-<table class="table table-bordered table-hover table-striped">
-  <thead>
-    <tr>
-      <th>Foto</th>
-      <th>Nombre</th>
-      <th>Email</th>
-      <th colspan="2">Opciones</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
+<!--Version para navegadores de escritorio-->
+<%= javascript_include_tag "buscador" %>
+<div class="oculto-en-moviles">
+  <h1 class="title">Listado de Usuarios</h1>
+  
+    <div class="panel-body">
+      <input type="text" class="form-control" id="task-table-filter" data-action="filter" data-filters="#task-table" placeholder="Filter Tasks" />
+    </div>
+    <table class="table table-hover" id="task-table">
+    <thead>
       <tr>
-        <td><%= image_tag(user.picture, size:'40x40') %></td> 
-        <td><%= user.first_name %></td>
-        <td><%= user.email %></td>
-        <td class="col-md-4 btn-group" role="group" aria-label="...">
-          <%= link_to image_tag('Options/show.png'), user, :class => 'btn btn-link', :title => "Mostrar" %>
-          <% if user == current_user || current_user.admin %>
-            <%= link_to image_tag('Options/edit.png'), edit_user_path(user), :class => 'btn btn-link', :title => "Editar" %>
-            <%= link_to image_tag('Options/delete.png'), user, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-link', :title => "Eliminar" %>
-          <% end %>
-        </td>
+        <th>Imagen</th>
+        <th>Nombre</th>
+        <th>Cedula</th>
+        <th>Telefono</th>
+        <th>Email</th>
+        <th>Acciones</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <%= render @users %>
+    </tbody>
+  </table>
+  <%= link_to image_tag('Options/new.png'),  new_user_path,  :remote => true, :rel => "tooltip", :title => "Ingresar nueva Profesión", :class => "btn btn-link boton-oculto-moviles " %>
 
-</br>
-<%= will_paginate %>
+</div>

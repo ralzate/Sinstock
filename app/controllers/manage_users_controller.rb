@@ -18,23 +18,40 @@ class ManageUsersController < ApplicationController
   end
 
   def create
-    @manage_user = ManageUser.new(manage_user_params)
-    if @manage_user.save
-      redirect_to(@manage_user, notice: 'User was successfully created.')
-    else
-      render :new
+    @manage_user = current_user.manage_users.build(manage_user_params)
+
+    respond_to do |format|
+      if @manage_user.save
+        format.html { flash[:success] = 'manage_usero se ha creado correctamente.'
+                      redirect_to @manage_user  }
+        format.json { render :show, status: :created, location: @manage_user }
+      else
+        format.html { render :new }
+        format.json { render json: @manage_user.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   def update
-    @manage_user.update(manage_user_params)
-    respond_with(@manage_user)
+    respond_to do |format|
+      if @manage_user.update(manage_user_params)
+        format.html { flash[:success] = 'Administración actualizada correctamente.'
+                      redirect_to @manage_user }
+        format.json { render :show, status: :ok, location: @manage_user }
+      else
+        format.html { render :edit }
+        format.json { render json: @manage_user.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
+
   def destroy
-    @manage_user.destroy
-    respond_with(@manage_user)
+    ManageUser.find(params[:id]).destroy
+    flash[:success] = "Registro Eliminado"
+    redirect_to manage_users_url
   end
+
 
   private
     def set_manage_user

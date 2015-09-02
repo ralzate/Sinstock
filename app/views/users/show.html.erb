@@ -8,6 +8,14 @@
   <strong>Email:</strong>
   <%= @user.email %>
 </p>
+
+<p>
+  <strong>Imagen:</strong>
+  <td><%= image_tag(@user.picture, size:'40x40') %></td> 
+
+</p>
+
+
 <% if logged_in? %>
   <% if @user == current_user || current_user.admin %>
     <%= link_to 'Editar', edit_user_path(@user) %> |

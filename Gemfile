@@ -16,7 +16,9 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'therubyracer',  platforms: :ruby
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
-
+gem 'lazybox', '0.2.3'
+gem 'simple_form_fancy_uploads'
+gem 'paperclip'
 
 gem 'responders'
 gem 'sorcery'

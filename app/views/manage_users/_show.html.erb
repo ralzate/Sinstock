@@ -1,17 +1,18 @@
 <%- model_class = ManageUser -%>
 <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="$.lazybox.close()">&times;</button>
 <div class="page-header">
-  <h2>post:<%= @manage_user.id %></h2>
+  <h3 align="center">Registro numero: <%= @manage_user.id %></h3>
   <table class="table table-bordered table-hover" >
     <thead>
-      <tr class="info">
-        <th>Nombre</th>
-        <th>Descripcion</th>
+      <tr class="active">
+        <th>Usuario</th>
+        <th>Rol</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><p><%= @manage_user.user_id %></p></td>
+        <td><p><%= @manage_user.user.first_name %></p></td>
+        <td><p><%= @manage_user.rol.name %></p></td>
       </tr>
     </tbody>
   </table>

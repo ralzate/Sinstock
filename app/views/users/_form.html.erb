@@ -1,27 +1,174 @@
-<%= form_for(@user, html: { multipart: true }) do |f| %>
+<div class="editar" id="persona">
+<div class="oculto-en-moviles">
 
-  <%= render 'shared/errors' %>
+<%= simple_form_for(@user, :html => { :class => 'form-horizontal' }, :remote => true) do |f| %>
 
-  <div class="form-group">
-      <%= f.label :Nombre %>
-      <%= f.text_field :first_name, class: 'form-control', required: true %>
+<div class="user">
+  <div class="modal-header">
+    <h4 class="modal-title"><h3>Datos de <%= @user.first_name %></h3></h4>
+  </div><br>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="col-sm-10">
+                <%= f.input :first_name, class: "form-control", autofocus: true, :label => "Primer nombre:", :required => true %>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="col-sm-10">
+                <%= f.input :second_name, class: "form-control", :label => "Segundo nombre:"  %>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="col-sm-10">
+                <%= f.input :identification, class: "form-control", :label => "Cedula:", :required => true %>
+            </div>
+        </div>
     </div>
 
-    <div class="form-group">
-      <%= f.label :Correo %>
-      <%= f.email_field :email, class: 'form-control', required: true %>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="col-sm-10">
+                <%= f.input :first_surname, class: "form-control", autofocus: true, :label => "Primer Apellido:", :required => true %>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="col-sm-10">
+                <%= f.input :second_surname, class: "form-control", :label => "Segundo Apellido:"  %>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="col-sm-10">
+                <%= f.input :phone, class: "form-control", :label => "Telefono:", :required => true %>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-      <%= f.label :Clave %>
-      <%= f.password_field :password, class: 'form-control' %>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="col-sm-10">
+                <%= f.input :address, class: "form-control", autofocus: true, :label => "Direccion:", :required => true %>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="col-sm-10">
+                <%= f.input :cell_phone, class: "form-control", :label => "Celular:"  %>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="col-sm-10">
+                <%= f.input :rut, class: "form-control", :label => "Rut:", :required => true %>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-      <%= f.label :Confirmar_Contraseña %>
-      <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="col-sm-10">
+                <%= f.input :business_name, class: "form-control", autofocus: true, :label => "Razón Social:", :required => true %>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="col-sm-10">
+                <%= f.input :nit, class: "form-control", :label => "Nit:"  %>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="col-sm-10">
+                <%= f.input :web_page, class: "form-control", :label => "Pagina Web:", :required => true %>
+            </div>
+        </div>
     </div>
-    <span class="picture">
-      <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png'  %>
-    </span>
-    <br/>
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="col-sm-10">
+                <%= f.input :first_name_of_contact_person, class: "form-control", autofocus: true, :label => "Primer nombre:", :required => true %>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="col-sm-10">
+                <%= f.input :second_name_of_contact_person, class: "form-control", :label => "Segundo nombre:"  %>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="col-sm-10">
+                <%= f.input :first_surname_of_contact_person, class: "form-control", :label => "Primer Apellido:", :required => true %>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="col-sm-10">
+                <%= f.input :second_surname_of_contact_person, class: "form-control", :label => "Segundo Apellido:", :required => true %>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="col-sm-10">
+                <%= f.input :first_phone_of_contact_person, class: "form-control", autofocus: true, :label => "Primer Telefono:", :required => true %>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="col-sm-10">
+                <%= f.input :second_phone_of_contact_person, class: "form-control", :label => "Segundo Telefono:"  %>
+            </div>
+        </div>
+
+    </div>
+
     <%= f.submit 'Enviar!', class: 'btn btn-primary btn-lg' %>
+
+</div>
+
+
 <% end %>
+</div>
+</div>
+
+
+
+<script type="text/javascript">
+function mostrar(id) {
+  if (id == "persona") {
+    $("#persona").show();
+    $("#empresa").hide();
+  }
+  
+  if (id == "empresa") {
+    $("#persona").hide();
+    $("#empresa").show();
+  }
+  
+
+}
+</script>
+</head>
+
+<body>
+<h1>Selecciona</h1>
+<form action="index.php" method="post">
+  Estado actual: 
+    <select id="status" name="status" onChange="mostrar(this.value);">
+        <option>Seleccionar</option>
+        <option value="persona">Persona</option>
+        <option value="empresa">Empresa</option>
+     </select>
+</form>
+
+
+<div id="empresa" class="element" style="display: none;">
+  <h2>Si eres trabajador...</h2>
+    <form action="index.php" method="post">
+      <p>Nombre:<br/>
+      <input type="text" name="nombre" /></p>
+        <p>Empresa:<br/>
+      <input type="text" name="centro" /></p>
+        <input type="submit" name="send" value="Enviar" />
+    </form>
+</div>
+
+
+
+</body>

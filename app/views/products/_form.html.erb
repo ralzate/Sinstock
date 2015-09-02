@@ -1,36 +1,26 @@
-<%= form_for(@product) do |f| %>
-  <% if @product.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+<%= simple_form_for @product, :html => { :class => 'form-horizontal' } do |f| %>
 
-      <ul>
-      <% @product.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= f.input :name, autocomplete: "off", class: "form-control", :label => "Confirma tu contraseña:", :required => true %>
+  <%= f.input :description, autocomplete: "off", class: "form-control", :label => "Confirma tu contraseña:", :required => true %>
+  <%= f.input :stock, autocomplete: "off", class: "form-control", :label => "Confirma tu contraseña:", :required => true %>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
+  <%= f.input :reference, autocomplete: "off", class: "form-control", :label => "Confirma tu contraseña:", :required => true %>
 
-  <div class="field">
-    <%= f.label :price %><br>
-    <%= f.text_field :price %>
-  </div>
+  <%= f.input :type_product_id, autocomplete: "off", class: "form-control", :label => "Confirma tu contraseña:", :required => true %>
 
-    <span class="picture">
-        <%= f.label :image_file %><br>
-      <%= f.file_field :image_file, accept: 'image/jpeg,image/gif,image/png'  %>
-    </span>
+  <%= f.input :user_id, autocomplete: "off", class: "form-control", :label => "Confirma tu contraseña:", :required => true %>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= f.input :quantity, autocomplete: "off", class: "form-control", :label => "Confirma tu contraseña:", :required => true %>
+  <%= f.input :price, autocomplete: "off", class: "form-control", :label => "Confirma tu contraseña:", :required => true %>
+  <%= f.input :unit_price, autocomplete: "off", class: "form-control", :label => "Confirma tu contraseña:", :required => true %>
+  <%= f.input :state_product, autocomplete: "off", class: "form-control", :label => "Confirma tu contraseña:", :required => true %>
+  
+  <%= f.input :total, autocomplete: "off", class: "form-control", :label => "Confirma tu contraseña:", :required => true %>
+  <%= f.input :new_used, autocomplete: "off", class: "form-control", :label => "Confirma tu contraseña:", :required => true %>
+        <%= f.file_field :avatar, class: "help-block" %>
+
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                products_path, :class => 'btn btn-default' %>
 <% end %>

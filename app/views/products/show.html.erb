@@ -1,32 +1,42 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Product -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
 
-<p>
-  <strong>Titulo:</strong>
-  <%= @product.title %>
-</p>
+<dl class="dl-horizontal">
+  <p><%= image_tag @product.avatar.url(:thumb) %></p>
+  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= @product.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
+  <dd><%= @product.description %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:stock) %>:</strong></dt>
+  <dd><%= @product.stock %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:reference) %>:</strong></dt>
+  <dd><%= @product.reference %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:type_product_id) %>:</strong></dt>
+  <dd><%= @product.type_product_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
+  <dd><%= @product.user_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:quantity) %>:</strong></dt>
+  <dd><%= @product.quantity %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:price) %>:</strong></dt>
+  <dd><%= @product.price %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:unit_price) %>:</strong></dt>
+  <dd><%= @product.unit_price %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:state_product) %>:</strong></dt>
+  <dd><%= @product.state_product %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:total) %>:</strong></dt>
+  <dd><%= @product.total %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:new_used) %>:</strong></dt>
+  <dd><%= @product.new_used %></dd>
+</dl>
 
-<p>
-  <strong>Descripcion:</strong>
-  <%= truncate(@product.description, length: 20) %>
-</p>
-
-<p>
-  <strong>Image file:</strong>
-  <td><%= image_tag(@product.image_file, size:'40x40') %></td> 
-</p>
-
-<p>
-  <strong>Precio:</strong>
-  <%= @product.price %>
-</p>
-
-<p>
-  <strong>Usuario:</strong>
-  <%= @product.user.first_name %>
-</p>
-<% if logged_in? %>
-  <% if current_user.products.include?(@product) || current_user.admin %>
-<%= link_to 'Edit', edit_product_path(@product) %> |
-  <% end %>
-<% end %>
-<%= link_to 'Back', products_path %>
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              products_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_product_path(@product), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              product_path(@product),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>

@@ -1,0 +1,51 @@
+<div class="show">
+<%- model_class = User -%>
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="$.lazybox.close()">&times;</button>
+<div class="page-header">
+  <h3 align="center">Datos de <%= @user.first_name %></h3>
+  <table class="table table-bordered table-hover" >
+    <thead>
+      <tr class="active">
+        <th>Nombre</th>
+        <th>Apellidos</th>
+        <th>Identificacion</th>
+        <th>Dirección</th>
+        <th>Telefono</th>
+        <th>Celular</th>
+        <th>Email</th>
+        <th>Rut</th>
+        <th>Razón Social</th>
+        <th>Nit</th>
+        <th>Pagina Web</th>
+        <th>Descripción</th>
+        <th>Nombres Contacto</th>
+        <th>Apellidos Contacto</th>
+        <th>Telefonos Contacto</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><p><%= @user.first_name %> <%= @user.second_name %></p></td>
+        <td><p><%= @user.first_surname %> <%= @user.second_surname %></p></td>
+        <td><p><%= @user.identification %></p></td>
+        <td><p><%= @user.address %></p></td>
+        <td><p><%= @user.phone %></p></td>
+        <td><p><%= @user.cell_phone %></p></td>
+        <td><p><%= @user.email %></p></td>
+        <td><p><%= @user.rut %></p></td>
+        <td><p><%= @user.business_name %></p></td>
+        <td><p><%= @user.nit %></p></td>
+        <td><p><%= @user.web_page %></p></td>
+        <td><p><%= @user.description %></p></td>
+        <td><p><%= @user.first_name_of_contact_person %> <%= @user.second_name_of_contact_person %></p></td>
+        <td><p><%= @user.first_surname_of_contact_person %> <%= @user.second_surname_of_contact_person %></p></td>
+        <td><p><%= @user.first_phone_of_contact_person %> <%= @user.second_phone_of_contact_person %></p></td>
+
+      </tr>
+    </tbody>
+  </table>
+  <div class="modal-footer">
+    <a href="#" class="btn btn-primary" onclick="$.lazybox.close()">Cerrar</a>
+  </div>
+</div>
+</div>

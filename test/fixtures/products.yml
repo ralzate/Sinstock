@@ -1,21 +1,29 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  description: MyText
-  image_file: MyString.jpg
+  name: MyString
+  description: MyString
+  stock: 1
+  reference: MyString
+  type_product_id: 
+  user_id: 
+  quantity: 1
   price: 9.99
-  user: raul
+  unit_price: 9.99
+  state_product: 1
+  total: 9.99
+  new_used: 1
 
 two:
-  title: MyString
-  description: MyText
-  image_file: MyString.jpg
+  name: MyString
+  description: MyString
+  stock: 1
+  reference: MyString
+  type_product_id: 
+  user_id: 
+  quantity: 1
   price: 9.99
-  user: raul
-three:
-  title: Another one
-  description: dasd aw awd aw daw daw dawfgea gfawf
-  image_file: image.jpg
-  price: 10
-  user: raul
+  unit_price: 9.99
+  state_product: 1
+  total: 9.99
+  new_used: 1

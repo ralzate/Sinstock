@@ -219,6 +219,7 @@ GEM
     jwt (1.5.1)
     launchy (2.4.3)
       addressable (~> 2.3)
+    lazybox (0.2.3)
     less (2.6.0)
       commonjs (~> 0.2.7)
     less-rails (2.7.0)
@@ -323,6 +324,10 @@ GEM
     simple_form (3.1.0)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
+    simple_form_fancy_uploads (0.2.0)
+      carrierwave
+      rails (>= 4.0.0)
+      simple_form (~> 3.1)
     sorcery (0.9.1)
       bcrypt (~> 3.1)
       oauth (~> 0.4, >= 0.4.4)
@@ -371,6 +376,7 @@ DEPENDENCIES
   guard-minitest
   jbuilder (~> 2.0)
   jquery-rails
+  lazybox (= 0.2.3)
   less-rails
   letter_opener
   mailboxer
@@ -385,6 +391,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   simple_form
+  simple_form_fancy_uploads
   sorcery
   spring
   therubyracer
