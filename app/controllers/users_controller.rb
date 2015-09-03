@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   skip_before_filter :require_login, only: [:new, :create, :show]
 
   def index
-      @users = User.paginate(page: params[:page], per_page: 25)
+      @users = User.search(params[:search]).page(params[:page]).per_page(1)
   end
 
   def show

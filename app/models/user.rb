@@ -13,6 +13,9 @@ class User < ActiveRecord::Base
 
 
 
+  def self.search(search)
+    where("email like '%#{search}%' or first_name like '%#{search}%'")
+  end
 
 
   class << self

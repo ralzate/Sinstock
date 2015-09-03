@@ -29,14 +29,25 @@
 }); 
 </script>
 
-
 <div align="center">
-<a href="#div1" id="hide2" class='MO'><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDEsJDExJysqLT0tMTU3Njo6Iys2REs/QzRFOiwBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc0Ny03NzQ3Nzc3Nzc3Nzc0Nzc3ODcsNzQ3Nyw3LzQ3Ky84L//AABEIADIAJwMBIgACEQEDEQH/xAAbAAACAgMBAAAAAAAAAAAAAAAABwUGAQMEAv/EADEQAAEDAwIEBAQGAwAAAAAAAAECAwQABREGIRIxQVEHE2FxFBUiUoGRobHh8BYjMv/EABkBAAMBAQEAAAAAAAAAAAAAAAIDBAUGAP/EACQRAAICAgECBwEAAAAAAAAAAAECAAMREiExQQQTIiNRgdEF/9oADAMBAAIRAxEAPwCp6ivE3Ul5fkSnlrStw+W2VHhbRnYAe1YbjxkpCSw2QOpSK0W9ngaC1f8ASv2pmeHtnh36KhuVbGg3Cd41ycnieJ5IPp3/AA71MRscTpPTRVsRxOG3eHibmzEkW8NOR3WwpxbzXlhJ6gd/epm6eFkdK1O2tpjh4Rhp05Oeu+Kv15ukOx2/4mUtLTQKUJGNsnYbD+7Uqper5027/CTpDSmBIUkPMEhPCdhgZxjrnnRMqqJBVZ4i87LwBKnq+zG0KejPxmm3EcJBSjGQSPSip7xCZnOW0+e95jTShwJ+3JHKilrjtLkbZQTIHSM+FEnH5lb/AI9rCkBnixzPOn5pi1N2ezMRW2whWONwD7jufy5fhSd0DYLVNft8xdzT8w+NwYG2SgHOT15CnvT0HeZnjbtsKPuULxRlBpMZp2AZccsuqVjI8pWwSvI7H96UVOfxHi3Z5mGqyh1Tq/MYdbbx9aFDOCD7UmltrbdU0tJS4lXCUkbg9qXZ1mj/ADiPJEsWoriLhoxtROXk8KHfcKA/XnRUTdlpi2V2Moj6gkn34hRQLCChc4mzw5j3X5+blaITctULJWhx4NjCgUjc01mNUX5+XIipsLaXo+PNC5ISE55bnbelRoTUtv0+1chcYhlplBsBrhBSoBWTnPpy9atq9Y29Mm6uvxnZqZq2lNtuAICQnocHp0p6nAmbejM/Sd2pdUXiZa58ddpEZUd1DS3m5OFtOE/Tjv8AzVIbs93kahXbnGlLuCVFTiSsE5xnJVmpq6aohzBeA2y8PjZbL7fEBsEYyDvXRJ1DZf8AI/ncJ25sPOKJf/1tqGOHAAB5+uaFuZRS7Vrqq4/eJTNXW2ZayY85KUuKSF/S4F7Z7is1MapeRrK7xo1ghr84s8KiW0oLhGSVEJ2G21FCB8SgWhQNzgyquNNhRw2kb9q8qUe5ooooAmsrV9x/OhtaysAqVz70UV6FH14Xw4rNi89mMy28s4U4lsBSvc9aKKKaOkw7j7hn/9k="></a>
-<div>
-<a href="#div2" id="hide1" class='MO'><img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQ47GtkDCzIalpj4gW1exlUjnalTAJnHWaCcVETnyx9wwmc5CYV"></a>
+    <% if not current_user %>
+    <a href="#div1" id="hide2" class='MO'><img src="http://restrack.me/images/rails-logo.png"></a>
+    <a href="#div2" id="hide1" class='MO'><img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQ47GtkDCzIalpj4gW1exlUjnalTAJnHWaCcVETnyx9wwmc5CYV"></a>
+    <% end %>
+    <% if current_user %>
+        <% if current_user.type_user == "Persona" %>
+            <a href="#div1" id="hide2" class='MO'><img src="http://restrack.me/images/rails-logo.png"></a>
+        <% end %>
+    <% end %>
+    <% if current_user %>
+        <% if current_user.type_user == "Empresa" %>
+            <a href="#div2" id="hide1" class='MO'><img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQ47GtkDCzIalpj4gW1exlUjnalTAJnHWaCcVETnyx9wwmc5CYV"></a>
+        <% end %>
+    <% end %>    
 </div>
-</div>
- 
+
+
+
 <div id="div1" class="oculto">
     <div class="editar" id="persona">
 <div class="oculto-en-moviles">
@@ -185,7 +196,13 @@
 </div>
 
 </div>
-<div id="div2" class="oculto">
+
+
+
+
+
+
+<div id="div2" class="oculto user_form">
     <div class="editar" id="persona">
 <div class="oculto-en-moviles">
 
@@ -297,6 +314,8 @@
                     <%= f.text_field :description, class: "form-control", :label => "Descripción:"  %>
                 </div>
             </div>
+                  <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png'  %>
+
             <%= f.hidden_field :type_user, value: "Empresa" %>
         </div>
         <br/>

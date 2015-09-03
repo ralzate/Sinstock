@@ -1,0 +1,40 @@
+<div class="show">
+<%- model_class = Product -%>
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="$.lazybox.close()">&times;</button>
+<div class="page-header">
+  <h3 align="center">Datos de <%= @product.name %></h3>
+  <table class="table table-bordered table-hover" >
+    <thead>
+      <tr class="active">
+        <th>Nombre</th>
+        <th>Descripcion</th>
+        <th>Stock</th>
+        <th>Referencia</th>
+        <th>Tipo Producto</th>
+        <th>Estado Producto</th>
+        <th>Cantidad</th>
+        <th>Precio</th>
+        <th>Nuevo / Usado</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><p><%= @product.name %></p></td>
+        <td><p><%= @product.description %></p></td>
+        <td><p><%= @product.stock %></p></td>
+        <td><p><%= @product.reference %></p></td>
+        <td><p><%= @product.type_product_id %></p></td>
+        <td><p><%= @product.state_product %></p></td>
+        <td><p><%= @product.quantity %></p></td>
+        <td><p><%= @product.unit_price %></p></td>
+        <td><p><%= @product.new_used %></p></td>
+        <td><p><%= @product.total %></p></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="modal-footer">
+    <a href="#" class="btn btn-primary" onclick="$.lazybox.close()">Cerrar</a>
+  </div>
+</div>
+</div>

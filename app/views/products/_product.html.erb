@@ -1,0 +1,14 @@
+<tr id=<%= "product_#{product.id}" %>>
+    <td><%= link_to image_tag(product.avatar, size:'40x40'), product, :remote => true,  :rel => "tooltip", :title => "Mostrar", :class => 'btn btn-link' %></td> 
+	<td><%= truncate(product.name, :length => 20) %></td>
+	<td><%= product.reference %></td>
+	<td><%= product.state_product %></td>
+	<td><%= product.quantity %></td>
+	<td><%= product.unit_price %></td>
+	<td><%= product.new_used %></td>
+	<td><%= product.total %></td>
+	<td>
+		<%= link_to  image_tag('Options/show.png'), product, :remote => true,  :rel => "tooltip", :title => "Mostrar", :class => 'btn btn-link'%>
+		<%= link_to image_tag('Options/edit.png'), edit_product_path(product),  :remote => true,  :rel => "tooltip", :title => "Editar", :class => 'btn btn-link'%>
+	</td>
+</tr>

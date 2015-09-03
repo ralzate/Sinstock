@@ -1,23 +1,94 @@
-<%= simple_form_for @product, :html => { :class => 'form-horizontal' } do |f| %>
+<%= simple_form_for(@product, :html => { :multipart => true, :remote => true }) do |f| %>
 
-  <%= f.input :name, autocomplete: "off", class: "form-control", :label => "Confirma tu contraseña:", :required => true %>
-  <%= f.input :description, autocomplete: "off", class: "form-control", :label => "Confirma tu contraseña:", :required => true %>
-  <%= f.input :stock, autocomplete: "off", class: "form-control", :label => "Confirma tu contraseña:", :required => true %>
-
-  <%= f.input :reference, autocomplete: "off", class: "form-control", :label => "Confirma tu contraseña:", :required => true %>
-
-  <%= f.input :type_product_id, autocomplete: "off", class: "form-control", :label => "Confirma tu contraseña:", :required => true %>
-
-  <%= f.input :user_id, autocomplete: "off", class: "form-control", :label => "Confirma tu contraseña:", :required => true %>
-
-  <%= f.input :quantity, autocomplete: "off", class: "form-control", :label => "Cantidad:", :required => true,  :input_html => {  :id => "txt1" } %>
-  <%= f.input :unit_price, autocomplete: "off", class: "form-control", :label => "Precio:", :required => true,  :input_html => {  :id => "txt2"} %>
-  <%= f.input :state_product, autocomplete: "off", class: "form-control", :label => "Confirma tu contraseña:", :required => true %>
+<script type="text/javascript">
   
-  <%= f.input :total, autocomplete: "off", class: "form-control", :label => "Total:", :required => true,  :input_html => {  :id => "txt3"}, :disabled => true %>
-  <%= f.input :new_used, autocomplete: "off", class: "form-control", :label => "Confirma tu contraseña:", :required => true %>
-        <%= f.file_field :avatar, class: "help-block" %>
+  // Multiplicar Cantidad por Precio Modelo de Productos
+$(document).ready(function () { 
+    $("#txt1, #txt2").change(function() {
+        $("#txt3").val($("#txt1").val() * $("#txt2").val());
+    });
+});
+</script>
 
+    <div class="user">
+      <div class="modal-header">
+        <h4 class="modal-title"><h3>Datos para los Productos</h3></h4>
+      </div><br>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="col-sm-10">
+                    <%= f.label :Nombre %>
+                    <%= f.text_field :name, class: "form-control" %>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="col-sm-10">
+                    <%= f.label :Descripcion %>
+                    <%= f.text_field :description, class: "form-control" %>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="col-sm-10">
+                    <%= f.label :Stock %>
+                    <%= f.text_field :stock, class: "form-control" %>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="col-sm-10">
+                    <%= f.label :Referencia %>
+                    <%= f.text_field :reference, class: "form-control" %>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="col-sm-10">
+                    <%= f.label :Tipo_Producto %>
+                    <%= f.text_field :type_product_id, class: "form-control"  %>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="col-sm-10">
+                    <%= f.label :Estado_Del_Producto %>
+                    <%= f.text_field :state_product, class: "form-control" %>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="col-sm-10">
+                    <%= f.input :quantity, class: "form-control", :label => "Cantidad:",  :input_html => {  :id => "txt1" } %>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="col-sm-10">
+                    <%= f.input :unit_price, class: "form-control", :label => "Precio:", :required => true,  :input_html => {  :id => "txt2"} %>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="col-sm-10">
+                    <%= f.input :total, class: "form-control", :label => "Total:", :required => true,  :input_html => {  :id => "txt3"}, :readonly => true %>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="col-sm-10">
+                    <%= f.input :new_used, class: "form-control", :label => "Nuevo / Usado:", :required => true %>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="col-sm-10">
+                    <%= f.file_field :avatar, class: "help-block" %>                
+                </div>
+            </div>
+        </div>
+
+           <%= f.hidden_field :user_id, :value => current_user.id %>
+
+        </div>
 
   <%= f.button :submit, :class => 'btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),

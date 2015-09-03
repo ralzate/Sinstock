@@ -1,59 +1,45 @@
-<%- model_class = Product -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
-</div>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:description) %></th>
-      <th><%= model_class.human_attribute_name(:stock) %></th>
-      <th><%= model_class.human_attribute_name(:reference) %></th>
-      <th><%= model_class.human_attribute_name(:type_product_id) %></th>
-      <th><%= model_class.human_attribute_name(:user_id) %></th>
-      <th><%= model_class.human_attribute_name(:quantity) %></th>
-      <th><%= model_class.human_attribute_name(:price) %></th>
-      <th><%= model_class.human_attribute_name(:unit_price) %></th>
-      <th><%= model_class.human_attribute_name(:state_product) %></th>
-      <th><%= model_class.human_attribute_name(:total) %></th>
-      <th><%= model_class.human_attribute_name(:new_used) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @products.each do |product| %>
-      <tr>
-          <td><%= link_to image_tag(product.avatar, size:'40x40'), product, :remote => true,  :rel => "tooltip", :title => "Mostrar", :class => 'btn btn-link' %></td> 
-        <td><%= link_to product.id, product_path(product) %></td>
-        <td><%= product.name %></td>
-        <td><%= product.description %></td>
-        <td><%= product.stock %></td>
-        <td><%= product.reference %></td>
-        <td><%= product.type_product_id %></td>
-        <td><%= product.user_id %></td>
-        <td><%= product.quantity %></td>
-        <td><%= product.price %></td>
-        <td><%= product.unit_price %></td>
-        <td><%= product.state_product %></td>
-        <td><%= product.total %></td>
-        <td><%= product.new_used %></td>
-        <td><%=l product.created_at %></td>
-        <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_product_path(product), :class => 'btn btn-default btn-xs' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      product_path(product),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-xs btn-danger' %>
-        </td>
-      </tr>
+<!--Version para navegadores de escritorio-->
+<div class="oculto-en-moviles">
+  <h1 class="title">Listado de Productos</h1>
+    
+    <%= form_tag request.path, :method => 'get' do %>
+    <%= content_tag :label do %>
+    Buscar:
+    <%= text_field_tag :search, params[:search], :placeholder => "Buscador Profesiones Usuarios" %>
+    <%= submit_tag "Consultar", :name => nil %>
     <% end %>
-  </tbody>
-</table>
+    <% end %>
+    <br />
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_product_path,
-            :class => 'btn btn-primary' %>
+    <div class="panel-body">
+    </div>
+    <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Imagen</th>
+        <th>Nombre</th>
+        <th>Referencia</th>
+        <th>Estado Producto</th>
+        <th>Cantidad</th>
+        <th>Precio Unitario</th>
+        <th>Nuevo / Usado</th>
+        <th>Total</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @products %>
+    </tbody>
+  </table>
+  <%= link_to image_tag('Options/new.png'),  new_product_path,  :remote => true, :rel => "tooltip", :title => "Ingresar nuevo Producto", :class => "btn btn-link boton-oculto-moviles " %>
+
+</div>
+<br />
+<br />
+<div align="center">
+  <%= will_paginate @products, :previous_label => '&laquo; Anterior', :next_label => 'Siguiente
+  &raquo;' %>
+</div>
+<div align="center">
+  Total products : <%= @products.total_entries %>
+</div>
