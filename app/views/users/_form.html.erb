@@ -185,6 +185,10 @@
                     <%= f.text_field :second_phone_of_contact_person, class: "form-control"  %>
                 </div>
             </div>
+
+            <%= f.label :Roles %>
+            <%= f.collection_select :rol_id, Rol.all, :id, :name, { prompt: "Por favor selecciona uno", :selected => params[:search], hide_label: :true }, class: "input-sm" %> 
+            
             <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png'  %>
 
             <%= f.hidden_field :type_user, value: "Persona" %>
@@ -316,7 +320,13 @@
                     <%= f.text_field :description, class: "form-control", :label => "Descripción:"  %>
                 </div>
             </div>
-                  <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png'  %>
+            
+            <% if current_user && current_user.rol_id == 1 %>
+            <%= f.label :Roles %>
+            <%= f.collection_select :rol_id, Rol.all, :id, :name, { prompt: "Por favor selecciona uno", :selected => params[:search], hide_label: :true }, class: "input-sm" %> 
+            <% end %>
+
+            <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png'  %>
 
             <%= f.hidden_field :type_user, value: "Empresa" %>
         </div>

@@ -2,7 +2,7 @@ class TypeProductsController < ApplicationController
   before_action :set_type_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    @type_products = TypeProduct.search(params[:search]).page(params[:page]).per_page(1)
+    @type_products = TypeProduct.search(params[:search]).page(params[:page]).per_page(5)
   end
 
   def show

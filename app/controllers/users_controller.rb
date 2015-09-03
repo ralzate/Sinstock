@@ -79,6 +79,6 @@ class UsersController < ApplicationController
         :description, :first_name_of_contact_person, :second_name_of_contact_person, 
         :first_surname_of_contact_person, :second_surname_of_contact_person, 
         :first_phone_of_contact_person, :second_phone_of_contact_person, :email, :password, 
-        :password_confirmation, :picture, :type_user)
+        :password_confirmation, :picture, :type_user, :rol_id)
     end
 end
