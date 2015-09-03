@@ -20,7 +20,7 @@ class TypeUsersController < ApplicationController
 
     respond_to do |format|
       if @type_user.save
-        format.html { redirect_to @type_user, notice: 'Type user was successfully created.' }
+        format.html { redirect_to @type_user, notice: 'Tipo Usuario creado correctamente.' }
         format.json { render :show, status: :created, location: @type_user }
       else
         format.html { render :new }
@@ -32,7 +32,7 @@ class TypeUsersController < ApplicationController
   def update
     respond_to do |format|
       if @type_user.update(type_user_params)
-        format.html { redirect_to @type_user, notice: 'Type user was successfully updated.' }
+        format.html { redirect_to @type_user, notice: 'Tipo Usuario actualizado correctamente.' }
         format.json { render :show, status: :ok, location: @type_user }
       else
         format.html { render :edit }
@@ -44,7 +44,7 @@ class TypeUsersController < ApplicationController
   def destroy
     @type_user.destroy
     respond_to do |format|
-      format.html { redirect_to type_users_url, notice: 'Type user was successfully destroyed.' }
+      format.html { redirect_to type_users_url, notice: 'Tipo Usuario eliminado.' }
       format.json { head :no_content }
     end
   end

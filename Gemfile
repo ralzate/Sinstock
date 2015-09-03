@@ -19,24 +19,18 @@ gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootst
 gem 'lazybox', '0.2.3'
 gem 'simple_form_fancy_uploads'
 gem 'paperclip'
-
+gem 'active_decorator'
 gem 'responders'
 gem 'sorcery'
 gem 'simple_form'
-
 gem 'validates_email_format_of'
-
 gem 'bootstrap-sass'
-
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog'
-gem 'paperclip'
-
 gem 'faker'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
-
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks

@@ -185,6 +185,8 @@
                     <%= f.text_field :second_phone_of_contact_person, class: "form-control"  %>
                 </div>
             </div>
+            <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png'  %>
+
             <%= f.hidden_field :type_user, value: "Persona" %>
 
         </div>

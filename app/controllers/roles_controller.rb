@@ -20,7 +20,7 @@ class RolesController < ApplicationController
 
     respond_to do |format|
       if @rol.save
-        format.html { redirect_to @rol, notice: 'Rol was successfully created.' }
+        format.html { redirect_to @rol, notice: 'Rol creado correctamente.' }
         format.json { render :show, status: :created, location: @rol }
       else
         format.html { render :new }
@@ -32,7 +32,7 @@ class RolesController < ApplicationController
   def update
     respond_to do |format|
       if @rol.update(rol_params)
-        format.html { redirect_to @rol, notice: 'Rol was successfully updated.' }
+        format.html { redirect_to @rol, notice: 'Rol actualizado correctamente.' }
         format.json { render :show, status: :ok, location: @rol }
       else
         format.html { render :edit }
@@ -44,7 +44,7 @@ class RolesController < ApplicationController
   def destroy
     @rol.destroy
     respond_to do |format|
-      format.html { redirect_to roles_url, notice: 'Rol was successfully destroyed.' }
+      format.html { redirect_to roles_url, notice: 'Rol eliminado.' }
       format.json { head :no_content }
     end
   end

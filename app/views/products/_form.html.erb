@@ -44,13 +44,18 @@ $(document).ready(function () {
             <div class="col-md-4">
                 <div class="col-sm-10">
                     <%= f.label :Tipo_Producto %>
-                    <%= f.text_field :type_product_id, class: "form-control"  %>
+                    <%= f.collection_select :type_product_id, TypeProduct.all, :id, :name, { prompt: "Por favor selecciona uno", :selected => params[:search], hide_label: :true }, class: "input-sm" %> 
+
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="col-sm-10">
                     <%= f.label :Estado_Del_Producto %>
-                    <%= f.text_field :state_product, class: "form-control" %>
+                    <%= f.input :state_product,
+                      prompt:       '-- Seleccionar --',
+                      collection: @product.select_state_product.sort,
+                      error: false, label: false, 
+                      input_html:   {class: 'form-control'} %>
                 </div>
             </div>
         </div>
@@ -76,7 +81,12 @@ $(document).ready(function () {
         <div class="row">
             <div class="col-md-4">
                 <div class="col-sm-10">
-                    <%= f.input :new_used, class: "form-control", :label => "Nuevo / Usado:", :required => true %>
+                    <%= f.label :Nuevo_Usado %>
+                    <%= f.input :new_used,
+                      prompt:       '-- Seleccionar --',
+                      collection: @product.select_new_used.sort,
+                      error: false, label: false, 
+                      input_html:   {class: 'form-control'} %>
                 </div>
             </div>
             <div class="col-md-4">
@@ -90,7 +100,6 @@ $(document).ready(function () {
 
         </div>
 
-  <%= f.button :submit, :class => 'btn-primary' %>
-  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                products_path, :class => 'btn btn-default' %>
+    <%= f.submit "Guardar", :class => 'btn btn-primary' %>
+    <a href="#" class="btn btn-default" onclick="$.lazybox.close()">Cerrar</a>
 <% end %>

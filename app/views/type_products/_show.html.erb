@@ -1,22 +1,24 @@
-<%- model_class = ManageUser -%>
+<div class="show">
+<%- model_class = TypeProduct -%>
 <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="$.lazybox.close()">&times;</button>
 <div class="page-header">
-  <h3 align="center">Registro numero: <%= @manage_user.id %></h3>
+  <h3 align="center">Datos de <%= @type_product.name %></h3>
   <table class="table table-bordered table-hover" >
     <thead>
       <tr class="active">
-        <th>Usuario</th>
-        <th>Rol</th>
+        <th>Nombre</th>
+        <th>Descripción</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><p><%= @manage_user.user.first_name %></p></td>
-        <td><p><%= @manage_user.rol.name %></p></td>
+        <td><p><%= @type_product.name %></p></td>
+        <td><p><%= @type_product.description %></p></td>
       </tr>
     </tbody>
   </table>
   <div class="modal-footer">
     <a href="#" class="btn btn-primary" onclick="$.lazybox.close()">Cerrar</a>
   </div>
+</div>
 </div>

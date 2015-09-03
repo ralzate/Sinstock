@@ -2,7 +2,6 @@ Rails.application.routes.draw do
 
   resources :products
   resources :products
-  resources :manage_users
   resources :sector_categories
   resources :type_products
   resources :type_users

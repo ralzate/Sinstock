@@ -20,7 +20,7 @@ class SectorCategoriesController < ApplicationController
 
     respond_to do |format|
       if @sector_category.save
-        format.html { redirect_to @sector_category, notice: 'Sector category was successfully created.' }
+        format.html { redirect_to @sector_category, notice: 'Registro creado correctamente.' }
         format.json { render :show, status: :created, location: @sector_category }
       else
         format.html { render :new }
@@ -32,7 +32,7 @@ class SectorCategoriesController < ApplicationController
   def update
     respond_to do |format|
       if @sector_category.update(sector_category_params)
-        format.html { redirect_to @sector_category, notice: 'Sector category was successfully updated.' }
+        format.html { redirect_to @sector_category, notice: 'Registro actualizado correctamente.' }
         format.json { render :show, status: :ok, location: @sector_category }
       else
         format.html { render :edit }
@@ -44,7 +44,7 @@ class SectorCategoriesController < ApplicationController
   def destroy
     @sector_category.destroy
     respond_to do |format|
-      format.html { redirect_to sector_categories_url, notice: 'Sector category was successfully destroyed.' }
+      format.html { redirect_to sector_categories_url, notice: 'Registro eliminado.' }
       format.json { head :no_content }
     end
   end

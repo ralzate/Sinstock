@@ -2,7 +2,7 @@ class TypeProductsController < ApplicationController
   before_action :set_type_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    @type_products = TypeProduct.all
+    @type_products = TypeProduct.search(params[:search]).page(params[:page]).per_page(1)
   end
 
   def show
@@ -20,7 +20,7 @@ class TypeProductsController < ApplicationController
 
     respond_to do |format|
       if @type_product.save
-        format.html { redirect_to @type_product, notice: 'Type product was successfully created.' }
+        format.html { redirect_to @type_product, notice: 'Tipo Producto creado correctamente.' }
         format.json { render :show, status: :created, location: @type_product }
       else
         format.html { render :new }
@@ -32,7 +32,7 @@ class TypeProductsController < ApplicationController
   def update
     respond_to do |format|
       if @type_product.update(type_product_params)
-        format.html { redirect_to @type_product, notice: 'Type product was successfully updated.' }
+        format.html { redirect_to @type_product, notice: 'Tipo Producto actualizado correctamente..' }
         format.json { render :show, status: :ok, location: @type_product }
       else
         format.html { render :edit }
@@ -44,7 +44,7 @@ class TypeProductsController < ApplicationController
   def destroy
     @type_product.destroy
     respond_to do |format|
-      format.html { redirect_to type_products_url, notice: 'Type product was successfully destroyed.' }
+      format.html { redirect_to type_products_url, notice: 'Tipo Producto eliminado.' }
       format.json { head :no_content }
     end
   end

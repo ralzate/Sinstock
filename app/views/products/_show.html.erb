@@ -20,15 +20,15 @@
     </thead>
     <tbody>
       <tr>
-        <td><p><%= @product.name %></p></td>
-        <td><p><%= @product.description %></p></td>
+        <td><p><%= truncate(@product.name, :length => 20) %></p></td>
+        <td><p><%= truncate(@product.description, :length => 20)  %></p></td>
         <td><p><%= @product.stock %></p></td>
         <td><p><%= @product.reference %></p></td>
-        <td><p><%= @product.type_product_id %></p></td>
-        <td><p><%= @product.state_product %></p></td>
+        <td><p><%= @product.type_product.name %></p></td>
+        <td><p><%= @product.label_state_product %></p></td>
         <td><p><%= @product.quantity %></p></td>
         <td><p><%= @product.unit_price %></p></td>
-        <td><p><%= @product.new_used %></p></td>
+        <td><p><%= @product.label_new_used %></p></td>
         <td><p><%= @product.total %></p></td>
       </tr>
     </tbody>

@@ -1,0 +1,9 @@
+<tr id=<%= "type_product_#{type_product.id}" %>>
+	<td><%= truncate(type_product.name, :length => 17) %></td>
+	<td><%= type_product.description %></td>
+	<td>
+		<%= link_to  image_tag('Options/show.png'), type_product, :remote => true,  :rel => "tooltip", :title => "Mostrar", :class => 'btn btn-link' %>
+		<%= link_to image_tag('Options/edit.png'), edit_type_product_path(type_product), :title => "Mostrar", :class => 'btn btn-link' %>
+
+	</td>
+</tr>

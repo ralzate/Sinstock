@@ -3,12 +3,13 @@
           <li class="navbar-header"><%= link_to 'Inicio', root_path, class: 'navbar-brand' %></li>
           <li><%= link_to 'Productos', products_path %></li>
         <% if current_user %>
+          
             <li><%= link_to "Usuarios", users_path %></li>
             <li><%= link_to "Roles", roles_path %></li>
-            <li><%= link_to "Admin", manage_users_path %></li>
             <li><%= link_to "Sectores Categorias", sector_categories_path %></li>
             <li><%= link_to "Tipo Productos", type_products_path %></li>
             <li><%= link_to "Tipo Usuarios", type_users_path %></li>
+
             <li role="presentation" class="dropdown">
               <a  class="dropdown-toggle" data-toggle="dropdown" role="button"
               aria-haspopup="true" aria-expanded="false">Bienvenido <%= current_user.first_name %> <span class="caret"></span></a>
