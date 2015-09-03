@@ -30,4 +30,9 @@ $(document).ready(function() {
 $('#teams').tooltip('show')
 
 
-
+// Multiplicar Cantidad por Precio Modelo de Productos
+$(document).ready(function () { 
+    $("#txt1, #txt2").change(function() {
+        $("#txt3").val($("#txt1").val() * $("#txt2").val());
+    });
+});

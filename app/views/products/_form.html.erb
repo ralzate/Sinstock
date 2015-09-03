@@ -10,12 +10,11 @@
 
   <%= f.input :user_id, autocomplete: "off", class: "form-control", :label => "Confirma tu contraseña:", :required => true %>
 
-  <%= f.input :quantity, autocomplete: "off", class: "form-control", :label => "Confirma tu contraseña:", :required => true %>
-  <%= f.input :price, autocomplete: "off", class: "form-control", :label => "Confirma tu contraseña:", :required => true %>
-  <%= f.input :unit_price, autocomplete: "off", class: "form-control", :label => "Confirma tu contraseña:", :required => true %>
+  <%= f.input :quantity, autocomplete: "off", class: "form-control", :label => "Cantidad:", :required => true,  :input_html => {  :id => "txt1" } %>
+  <%= f.input :unit_price, autocomplete: "off", class: "form-control", :label => "Precio:", :required => true,  :input_html => {  :id => "txt2"} %>
   <%= f.input :state_product, autocomplete: "off", class: "form-control", :label => "Confirma tu contraseña:", :required => true %>
   
-  <%= f.input :total, autocomplete: "off", class: "form-control", :label => "Confirma tu contraseña:", :required => true %>
+  <%= f.input :total, autocomplete: "off", class: "form-control", :label => "Total:", :required => true,  :input_html => {  :id => "txt3"}, :disabled => true %>
   <%= f.input :new_used, autocomplete: "off", class: "form-control", :label => "Confirma tu contraseña:", :required => true %>
         <%= f.file_field :avatar, class: "help-block" %>
 

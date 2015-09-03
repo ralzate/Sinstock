@@ -1,174 +1,309 @@
-<div class="editar" id="persona">
-<div class="oculto-en-moviles">
-
-<%= simple_form_for(@user, :html => { :class => 'form-horizontal' }, :remote => true) do |f| %>
-
-<div class="user">
-  <div class="modal-header">
-    <h4 class="modal-title"><h3>Datos de <%= @user.first_name %></h3></h4>
-  </div><br>
-
-    <div class="row">
-        <div class="col-md-4">
-            <div class="col-sm-10">
-                <%= f.input :first_name, class: "form-control", autofocus: true, :label => "Primer nombre:", :required => true %>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="col-sm-10">
-                <%= f.input :second_name, class: "form-control", :label => "Segundo nombre:"  %>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="col-sm-10">
-                <%= f.input :identification, class: "form-control", :label => "Cedula:", :required => true %>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-4">
-            <div class="col-sm-10">
-                <%= f.input :first_surname, class: "form-control", autofocus: true, :label => "Primer Apellido:", :required => true %>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="col-sm-10">
-                <%= f.input :second_surname, class: "form-control", :label => "Segundo Apellido:"  %>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="col-sm-10">
-                <%= f.input :phone, class: "form-control", :label => "Telefono:", :required => true %>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-4">
-            <div class="col-sm-10">
-                <%= f.input :address, class: "form-control", autofocus: true, :label => "Direccion:", :required => true %>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="col-sm-10">
-                <%= f.input :cell_phone, class: "form-control", :label => "Celular:"  %>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="col-sm-10">
-                <%= f.input :rut, class: "form-control", :label => "Rut:", :required => true %>
-            </div>
-        </div>
-    </div>
 
 
-    <div class="row">
-        <div class="col-md-4">
-            <div class="col-sm-10">
-                <%= f.input :business_name, class: "form-control", autofocus: true, :label => "Razón Social:", :required => true %>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="col-sm-10">
-                <%= f.input :nit, class: "form-control", :label => "Nit:"  %>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="col-sm-10">
-                <%= f.input :web_page, class: "form-control", :label => "Pagina Web:", :required => true %>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-3">
-            <div class="col-sm-10">
-                <%= f.input :first_name_of_contact_person, class: "form-control", autofocus: true, :label => "Primer nombre:", :required => true %>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="col-sm-10">
-                <%= f.input :second_name_of_contact_person, class: "form-control", :label => "Segundo nombre:"  %>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="col-sm-10">
-                <%= f.input :first_surname_of_contact_person, class: "form-control", :label => "Primer Apellido:", :required => true %>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="col-sm-10">
-                <%= f.input :second_surname_of_contact_person, class: "form-control", :label => "Segundo Apellido:", :required => true %>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-6">
-            <div class="col-sm-10">
-                <%= f.input :first_phone_of_contact_person, class: "form-control", autofocus: true, :label => "Primer Telefono:", :required => true %>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="col-sm-10">
-                <%= f.input :second_phone_of_contact_person, class: "form-control", :label => "Segundo Telefono:"  %>
-            </div>
-        </div>
-
-    </div>
-
-    <%= f.submit 'Enviar!', class: 'btn btn-primary btn-lg' %>
-
-</div>
-
-
-<% end %>
-</div>
-</div>
 
 
 
 <script type="text/javascript">
-function mostrar(id) {
-  if (id == "persona") {
-    $("#persona").show();
-    $("#empresa").hide();
-  }
-  
-  if (id == "empresa") {
-    $("#persona").hide();
-    $("#empresa").show();
-  }
-  
+    
 
-}
+    jQuery(document).ready(function(){ 
+    $("#hide1").click(function(){
+        $("#hide2").hide();
+    });
+    $("#hide2").click(function(){
+        $("#hide1").hide();
+    });
+    $(".oculto").hide();              
+    $(".MO").click(function(){
+          var nodo = $(this).attr("href");  
+ 
+          if ($(nodo).is(":visible")){
+               $(nodo).hide();
+               return false;
+          }else{
+        $(".oculto").hide();                             
+        $(nodo).fadeToggle( "slow" );
+        return false;
+          }
+    });
+}); 
 </script>
-</head>
-
-<body>
-<h1>Selecciona</h1>
-<form action="index.php" method="post">
-  Estado actual: 
-    <select id="status" name="status" onChange="mostrar(this.value);">
-        <option>Seleccionar</option>
-        <option value="persona">Persona</option>
-        <option value="empresa">Empresa</option>
-     </select>
-</form>
 
 
-<div id="empresa" class="element" style="display: none;">
-  <h2>Si eres trabajador...</h2>
-    <form action="index.php" method="post">
-      <p>Nombre:<br/>
-      <input type="text" name="nombre" /></p>
-        <p>Empresa:<br/>
-      <input type="text" name="centro" /></p>
-        <input type="submit" name="send" value="Enviar" />
-    </form>
+<div align="center">
+<a href="#div1" id="hide2" class='MO'><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDEsJDExJysqLT0tMTU3Njo6Iys2REs/QzRFOiwBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc0Ny03NzQ3Nzc3Nzc3Nzc0Nzc3ODcsNzQ3Nyw3LzQ3Ky84L//AABEIADIAJwMBIgACEQEDEQH/xAAbAAACAgMBAAAAAAAAAAAAAAAABwUGAQMEAv/EADEQAAEDAwIEBAQGAwAAAAAAAAECAwQABREGIRIxQVEHE2FxFBUiUoGRobHh8BYjMv/EABkBAAMBAQEAAAAAAAAAAAAAAAIDBAUGAP/EACQRAAICAgECBwEAAAAAAAAAAAECAAMREiExQQQTIiNRgdEF/9oADAMBAAIRAxEAPwCp6ivE3Ul5fkSnlrStw+W2VHhbRnYAe1YbjxkpCSw2QOpSK0W9ngaC1f8ASv2pmeHtnh36KhuVbGg3Cd41ycnieJ5IPp3/AA71MRscTpPTRVsRxOG3eHibmzEkW8NOR3WwpxbzXlhJ6gd/epm6eFkdK1O2tpjh4Rhp05Oeu+Kv15ukOx2/4mUtLTQKUJGNsnYbD+7Uqper5027/CTpDSmBIUkPMEhPCdhgZxjrnnRMqqJBVZ4i87LwBKnq+zG0KejPxmm3EcJBSjGQSPSip7xCZnOW0+e95jTShwJ+3JHKilrjtLkbZQTIHSM+FEnH5lb/AI9rCkBnixzPOn5pi1N2ezMRW2whWONwD7jufy5fhSd0DYLVNft8xdzT8w+NwYG2SgHOT15CnvT0HeZnjbtsKPuULxRlBpMZp2AZccsuqVjI8pWwSvI7H96UVOfxHi3Z5mGqyh1Tq/MYdbbx9aFDOCD7UmltrbdU0tJS4lXCUkbg9qXZ1mj/ADiPJEsWoriLhoxtROXk8KHfcKA/XnRUTdlpi2V2Moj6gkn34hRQLCChc4mzw5j3X5+blaITctULJWhx4NjCgUjc01mNUX5+XIipsLaXo+PNC5ISE55bnbelRoTUtv0+1chcYhlplBsBrhBSoBWTnPpy9atq9Y29Mm6uvxnZqZq2lNtuAICQnocHp0p6nAmbejM/Sd2pdUXiZa58ddpEZUd1DS3m5OFtOE/Tjv8AzVIbs93kahXbnGlLuCVFTiSsE5xnJVmpq6aohzBeA2y8PjZbL7fEBsEYyDvXRJ1DZf8AI/ncJ25sPOKJf/1tqGOHAAB5+uaFuZRS7Vrqq4/eJTNXW2ZayY85KUuKSF/S4F7Z7is1MapeRrK7xo1ghr84s8KiW0oLhGSVEJ2G21FCB8SgWhQNzgyquNNhRw2kb9q8qUe5ooooAmsrV9x/OhtaysAqVz70UV6FH14Xw4rNi89mMy28s4U4lsBSvc9aKKKaOkw7j7hn/9k="></a>
+<div>
+<a href="#div2" id="hide1" class='MO'><img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQ47GtkDCzIalpj4gW1exlUjnalTAJnHWaCcVETnyx9wwmc5CYV"></a>
+</div>
+</div>
+ 
+<div id="div1" class="oculto">
+    <div class="editar" id="persona">
+<div class="oculto-en-moviles">
+
+<%= form_for(@user, html: { multipart: true }) do |f| %>
+
+    <div class="user">
+      <div class="modal-header">
+        <h4 class="modal-title"><h3>Datos para personas</h3></h4>
+      </div><br>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="col-sm-10">
+                    <%= f.label :Primer_Nombre %>
+                    <%= f.text_field :first_name, class: "form-control" %>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="col-sm-10">
+                    <%= f.label :Segundo_Nombre %>
+                    <%= f.text_field :second_name, class: "form-control" %>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="col-sm-10">
+                    <%= f.label :Identificacion %>
+                    <%= f.text_field :identification, class: "form-control" %>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="col-sm-10">
+                    <%= f.label :Primer_Apellido %>
+                    <%= f.text_field :first_surname, class: "form-control" %>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="col-sm-10">
+                    <%= f.label :Segundo_Apellido %>
+                    <%= f.text_field :second_surname, class: "form-control"  %>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="col-sm-10">
+                    <%= f.label :Telefono %>
+                    <%= f.text_field :phone, class: "form-control" %>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="col-sm-10">
+                    <%= f.label :Direccion %>
+                    <%= f.text_field :address, class: "form-control" %>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="col-sm-10">
+                    <%= f.label :Celular %>
+                    <%= f.text_field :cell_phone, class: "form-control" %>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="col-sm-10">
+                    <%= f.label :Rut %>
+                    <%= f.text_field :rut, class: "form-control" %>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="col-sm-10">
+                    <%= f.label :Pagina_Web %>
+                    <%= f.text_field :web_page, class: "form-control", :label => "Pagina Web:" %>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="col-sm-10">
+                    <%= f.label :Primer_Nombre %>
+                    <%= f.text_field :first_name_of_contact_person, class: "form-control", autofocus: true, :label => "Primer nombre:" %>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="col-sm-10">
+                    <%= f.label :Primer_Nombre %>
+                    <%= f.text_field :second_name_of_contact_person, class: "form-control", :label => "Segundo nombre:"  %>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="col-sm-10">
+                    <%= f.label :Primer_Apellido %>
+                    <%= f.text_field :first_surname_of_contact_person, class: "form-control", :label => "Primer Apellido:" %>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="col-sm-10">
+                    <%= f.label :Segundo_Apellido %>
+                    <%= f.text_field :second_surname_of_contact_person, class: "form-control", :label => "Segundo Apellido:" %>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="col-sm-10">
+                    <%= f.label :Email %>
+                    <%= f.email_field :email, class: "form-control"  %>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="col-sm-10">
+                    <%= f.label :Clave %>
+                    <%= f.password_field :password, class: "form-control" %>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="col-sm-10">
+                    <%= f.label :Confirmar_clave %>
+                    <%= f.password_field :password_confirmation, class: "form-control" %>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="col-sm-10">
+                    <%= f.label :Primer_Telefono %>
+                    <%= f.text_field :first_phone_of_contact_person, class: "form-control" %>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="col-sm-10">
+                    <%= f.label :Segundo_Telefono %>
+                    <%= f.text_field :second_phone_of_contact_person, class: "form-control"  %>
+                </div>
+            </div>
+            <%= f.hidden_field :type_user, value: "Persona" %>
+
+        </div>
+        <br/><br/>
+        <%= f.submit 'Enviar!', class: 'btn btn-primary btn-lg' %>
+    </div>
+<% end %>
+</div>
 </div>
 
+</div>
+<div id="div2" class="oculto">
+    <div class="editar" id="persona">
+<div class="oculto-en-moviles">
 
+<%= form_for(@user, html: { multipart: true }) do |f| %>
 
-</body>
+    <div class="user">
+      <div class="modal-header">
+        <h4 class="modal-title"><h3>Datos para Empresas</h3></h4>
+      </div><br>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="col-sm-10">
+                    <%= f.label :Nombre %>
+                    <%= f.text_field :first_name, class: "form-control" %>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="col-sm-10">
+                    <%= f.label :Telefono %>
+                    <%= f.text_field :phone, class: "form-control" %>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="col-sm-10">
+                    <%= f.label :Dirección %>
+                    <%= f.text_field :address, class: "form-control" %>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="col-sm-10">
+                    <%= f.label :Celular %>
+                    <%= f.text_field :cell_phone, class: "form-control"  %>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="col-sm-10">
+                    <%= f.label :Pagina_Web %>
+                    <%= f.text_field :web_page, class: "form-control" %>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="col-sm-10">
+                    <%= f.label :Primer_Nombre %>
+                    <%= f.text_field :first_name_of_contact_person, class: "form-control", autofocus: true, :label => "Primer nombre:" %>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="col-sm-10">
+                    <%= f.label :Segundo_Nombre %>
+                    <%= f.text_field :second_name_of_contact_person, class: "form-control", :label => "Segundo nombre:"  %>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="col-sm-10">
+                    <%= f.label :Primer_Apellido %>
+                    <%= f.text_field :first_surname_of_contact_person, class: "form-control", :label => "Primer Apellido:" %>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="col-sm-10">
+                    <%= f.label :Segundo_Apellido %>
+                    <%= f.text_field :second_surname_of_contact_person, class: "form-control", :label => "Segundo Apellido:" %>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="col-sm-10">
+                    <%= f.label :Email %>
+                    <%= f.email_field :email, class: "form-control" %>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="col-sm-10">
+                    <%= f.label :Clave %>
+                    <%= f.password_field :password, class: "form-control", :label => "Clave:"  %>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="col-sm-10">
+                    <%= f.label :Confirmar_clave %>
+                    <%= f.password_field :password_confirmation, class: "form-control", :label => "Confirmar clave:"  %>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-6">
+                <div class="col-sm-10">
+                    <%= f.label :Primer_Telefono %>
+                    <%= f.text_field :first_phone_of_contact_person, class: "form-control", autofocus: true, :label => "Primer Telefono:" %>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="col-sm-10">
+                    <%= f.label :Segundo_Telefono %>
+                    <%= f.text_field :second_phone_of_contact_person, class: "form-control", :label => "Segundo Telefono:"  %>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-sm-10">
+                    <%= f.label :Descripción %>
+                    <%= f.text_field :description, class: "form-control", :label => "Descripción:"  %>
+                </div>
+            </div>
+            <%= f.hidden_field :type_user, value: "Empresa" %>
+        </div>
+        <br/>
+        <%= f.submit 'Enviar!', class: 'btn btn-primary btn-lg' %>
+    </div>
+<% end %>
+</div>
+</div>
+
+</div>
