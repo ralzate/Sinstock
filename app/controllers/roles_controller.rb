@@ -1,8 +1,9 @@
 class RolesController < ApplicationController
   before_action :set_rol, only: [:show, :edit, :update, :destroy]
+  before_filter :authorize
 
   def index
-    @roles = Rol.all
+    @roles = Rol.search(params[:search]).page(params[:page]).per_page(1)
   end
 
   def show
@@ -48,6 +49,7 @@ class RolesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 
   private
     def set_rol

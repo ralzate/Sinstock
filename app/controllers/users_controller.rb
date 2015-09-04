@@ -2,9 +2,10 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :current_user?, only: [:edit, :update, :destroy]
   skip_before_filter :require_login, only: [:new, :create, :show]
+  before_filter :authorize
 
   def index
-      @users = User.search(params[:search]).page(params[:page]).per_page(1)
+      @users = User.search(params[:search]).page(params[:page]).per_page(3)
   end
 
   def show

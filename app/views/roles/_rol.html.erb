@@ -1,0 +1,8 @@
+<tr id=<%= "rol_#{rol.id}" %>>
+	<td><%= truncate(rol.name, :length => 20) %></td>
+	<td><%= truncate(rol.description, :length => 20) %></td>
+	<td>
+		<%= link_to  image_tag('Options/show.png', :size => "25x25"), rol, :remote => true,  :rel => "tooltip", :title => "Mostrar", :class => 'btn btn-link'%>
+		<%= link_to image_tag('Options/edit.png', :size => "25x25"), edit_rol_path(rol),  :remote => true,  :rel => "tooltip", :title => "Editar", :class => 'btn btn-link' %>
+	</td>
+</tr>

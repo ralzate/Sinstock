@@ -1,7 +1,7 @@
 class ConversationsController < ApplicationController
   helper_method :mailbox, :conversation
-
   before_action :mailbox
+  before_filter :authorize
 
  def create
    recipient_emails = conversation_params(:recipients).split(',')

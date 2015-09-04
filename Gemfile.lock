@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/ctran/annotate_models.git
+  revision: d878a5b784ee0f703e9ee677bc0231dc24159512
+  specs:
+    annotate (2.6.10)
+      activerecord (>= 3.2, <= 4.3)
+      rake (~> 10.4)
+
+GIT
   remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
   revision: a889e2d6e6527b94234b88f0c6b635d29d8e7ae8
   specs:
@@ -367,6 +375,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_decorator
+  annotate!
   bootstrap-sass
   bootstrap-will_paginate
   byebug

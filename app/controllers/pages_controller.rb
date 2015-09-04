@@ -3,6 +3,9 @@ class PagesController < ApplicationController
   def home
   end
 
+  def treeview
+  end
+
   def contact
   end
 

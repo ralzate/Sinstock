@@ -8,7 +8,6 @@
 
 </head>
 <body>
-  <div id="wrap">
 
     <%= render 'layouts/header' %>
 
@@ -17,7 +16,6 @@
         <div class="alert alert-danger" style="text-align:center">Please activate your account.</div>
       <% end %>
     <% end %>
-    <div class="container">
       <% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>" style="text-align:center">
           <%= value %>
@@ -25,8 +23,6 @@
       <% end %>
 
       <%= yield %>
-    </div>
-  </div>
 
     <% if logged_in? %>
     <%= render 'shared/current_users' %>

@@ -9,6 +9,25 @@ class ApplicationController < ActionController::Base
   # Ruta.js
   # protect_from_forgery with: :null_session
 
+
+helper_method :admin?
+
+  protected
+  def admin?     
+        #if current_user.rol_id == 1             
+               # flash[:notice] = "Bienvenido #{current_user.first_name.capitalize}"
+     #end   
+     true         
+  end
+
+  def authorize
+    unless admin?
+      flash[:error] = "Acceso no Permitido"
+      redirect_to root_path
+      false
+    end
+  end
+
   private
   def not_authenticated
     flash[:danger] = "Por Favor Inicia Sesión Para Continuar"

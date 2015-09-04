@@ -1,5 +1,6 @@
 class TypeProductsController < ApplicationController
   before_action :set_type_product, only: [:show, :edit, :update, :destroy]
+  before_filter :authorize
 
   def index
     @type_products = TypeProduct.search(params[:search]).page(params[:page]).per_page(5)

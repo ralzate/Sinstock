@@ -1,5 +1,6 @@
 class TypeUsersController < ApplicationController
   before_action :set_type_user, only: [:show, :edit, :update, :destroy]
+  before_filter :authorize
 
   def index
     @type_users = TypeUser.all

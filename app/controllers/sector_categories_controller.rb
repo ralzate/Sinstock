@@ -1,5 +1,6 @@
 class SectorCategoriesController < ApplicationController
   before_action :set_sector_category, only: [:show, :edit, :update, :destroy]
+  before_filter :authorize
 
   def index
     @sector_categories = SectorCategory.all

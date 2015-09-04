@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get 'pages/home'
   get 'pages/contact'
   get 'pages/help'
+  get 'pages/treeview'
+  get 'closed_projects' => 'pages#treeview', as: 'closed_projects'
 
   root to: 'pages#home'
 

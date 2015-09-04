@@ -7,7 +7,7 @@
 	<td><%= product.new_used %></td>
 	<td><%= product.total %></td>
 	<td>
-		<%= link_to  image_tag('Options/show.png'), product, :remote => true,  :rel => "tooltip", :title => "Mostrar", :class => 'btn btn-link'%>
-		<%= link_to image_tag('Options/edit.png'), edit_product_path(product),  :remote => true,  :rel => "tooltip", :title => "Editar", :class => 'btn btn-link'%>
+		<%= link_to  image_tag('Options/show.png', :size => "25x25"), product, :remote => true,  :rel => "tooltip", :title => "Mostrar", :class => 'btn btn-link'%>
+		<%= link_to image_tag('Options/edit.png', :size => "25x25"), edit_product_path(product),  :remote => true,  :rel => "tooltip", :title => "Editar", :class => 'btn btn-link'%>
 	</td>
 </tr>
