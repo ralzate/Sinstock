@@ -164,6 +164,7 @@ ul.social-network {
 ul.social-network li {
     display: inline;
     margin: 0 5px;
+
 }
 
 
@@ -205,6 +206,7 @@ a.socialIcon:hover, .socialHoverClass {
     width: 50px;
     height: 50px;
     font-size:20px;
+    top: -15px;
 }
 .social-circle li i {
     margin:0;
@@ -251,6 +253,73 @@ a.socialIcon:hover, .socialHoverClass {
 
 
 
+
+
+
+/* Logo SinStock */
+.Mylogo {
+  width: 300px;
+  height: 60px;
+  margin: auto;
+  margin-left: -18px;
+  margin-top: 20px;
+  font-style: italic;
+}
+.Mybox {
+  width: 60px;
+  height: 60px;
+  border: 1px solid rgba(0,0,0,.5);
+  border-radius: 10px;
+  background: #1ABC9C;
+  color: #fff;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 60px;
+  text-align: center;
+  font-style: italic;
+  position: absolute;
+  left: 0%;
+  z-index: 2;
+  animation: test 2s;
+  margin-top: -10px;
+  margin-left: 15px;
+}
+
+.Mytext {
+  height: 60px;
+  color: #000;
+  padding-left: 80px;
+  line-height: 60px;
+  font-size: 30px;
+  font-weight: 100;
+  animation: fade 2.5s;
+}
+
+@keyframes expand {
+  0% { height: 0; }
+  40% { height: 0; }
+  60% { height: 80%; }
+}
+
+@keyframes test {
+  0% { transform: scale(0);  left: 39%; }
+  40% { transform: scale(1);  left: 39%;}
+  60% { transform: scale(1);  left: 39%;}
+  100% { left: 0%; }
+}
+
+@keyframes fade {
+  0% { opacity: 0; }
+  65% { opacity: 0; padding-left: 70px; }
+  100% { opacity: 1; padding-left: 80px; }
+}
+
+
+
+
+.second{
+  color: #BDBDBD !important;
+}
 
 
 
@@ -908,9 +977,9 @@ z-index: 9;
   padding-bottom: 150px;
   padding-top: 30px;
 }
-.product-widget-area .zigzag-bottom{background: #333}
+.product-widget-area .zigzag-bottom{background: #1abc9c}
 .footer-top-area .zigzag-bottom{background: #000}
-.footer-top-area {background: none repeat scroll 0 0 #333;
+.footer-top-area {background: none repeat scroll 0 0 #1abc9c;
 color: #999;
 padding: 35px 0 180px;}
 
@@ -1692,3 +1761,38 @@ div.coupon input[type="text"] {
   
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

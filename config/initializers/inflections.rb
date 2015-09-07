@@ -13,7 +13,7 @@ inflect.irregular 'type_user', 'type_users'
 inflect.irregular 'type_product', 'type_products'
 inflect.irregular 'sector_category', 'sector_categories'
 inflect.irregular 'manage_user', 'manage_users'
-
+inflect.irregular 'comment', 'comments'
 end
 
 # These inflection rules are supported but not enabled by default:

@@ -1,0 +1,16 @@
+<div class="comment">
+	<p class="comment-content"><%= comment.content %></p>
+	<p class="comment-posted-by">Posted by <%= comment.user.email %> <%= time_ago_in_words(comment.created_at) %> ago</p>
+
+	<div class="links">
+		<% if comment.user_id == current_user.id %>
+			<%= link_to "Editar", edit_product_comment_path(comment.product, comment), class: "btn-custom" %>
+			<%= link_to 'Delete', [comment.product, comment],
+                    method: :delete,
+                    class: "button",
+                    data: { confirm: "Are you sure?" } %>
+			<td><% link_to product_comment_path(@product,comment) %></td>
+
+		<% end %>
+	</div>
+</div>

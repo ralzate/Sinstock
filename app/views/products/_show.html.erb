@@ -33,6 +33,16 @@
       </tr>
     </tbody>
   </table>
+
+  
+    <h3 class="comment-section-header">Preguntas:</h3>
+    <!-- renders the _comment.html.erb partial file. -->
+    <p><%= render @product.comments %></p>
+
+    <h3 class="reply-to-msg">Escribe tu Pregunta:</h3>
+    <!-- renders the comments form -->
+    <%= render 'comments/form' %>
+  
   <div class="modal-footer">
     <a href="#" class="btn btn-primary" onclick="$.lazybox.close()">Cerrar</a>
   </div>

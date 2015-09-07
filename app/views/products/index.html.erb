@@ -6,6 +6,7 @@
     <%= content_tag :label do %>
     Buscar:
     <%= text_field_tag :search, params[:search], :placeholder => "Buscador de Productos" %>
+    
     <%= submit_tag "Consultar", :name => nil %>
     <% end %>
     <% end %>
@@ -42,3 +43,8 @@
 <div align="center">
   Total products : <%= @products.total_entries %>
 </div>
+
+
+
+
+

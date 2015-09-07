@@ -1,0 +1,5 @@
+<h1>Editar Comentario</h1>
+<%= simple_form_for([@product, @comment]) do |f| %>
+	<%= f.input :content, label: "Commentario" %>
+	<%= f.submit "Actualizar Commentario", class: "btn-custom" %>
+<% end %>

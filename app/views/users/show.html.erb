@@ -10,9 +10,13 @@
 </p>
 
 <p>
+  <% if @user.picture? %>
   <strong>Imagen:</strong>
   <td><%= image_tag(@user.picture, size:'40x40') %></td> 
-
+  <strong>Imagen:</strong>
+  <% else  %>
+  <img src="http://www.gravatar.com/avatar/00000000000000000000000000000000">
+  <% end %>
 </p>
 
 

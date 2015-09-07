@@ -1,5 +1,11 @@
 <tr id=<%= "user_#{user.id}" %>>
+<% if user.picture? %>
     <td><%= link_to image_tag(user.picture, size:'40x40'), user, :remote => true,  :rel => "tooltip", :title => "Mostrar", :class => 'btn btn-link' %></td> 
+  <% else  %>
+  <td><%= link_to  image_tag('UserDefault.png', :size => "35x35"), user, :remote => true,  :rel => "tooltip", :title => "Mostrar", :class => 'btn btn-link' %>
+</td>
+  <% end %>
+
 	<td><%= truncate(user.first_name, :length => 17) %></td>
 	<td><%= user.identification %></td>
 	<td><%= user.phone %></td>
@@ -10,3 +16,5 @@
 
 	</td>
 </tr>
+
+
