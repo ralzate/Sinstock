@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require lazybox
+//= require jasny-bootstrap.min
 //= require turbolinks
 //= require_tree .
 

@@ -53,6 +53,7 @@ class User < ActiveRecord::Base
   acts_as_messageable
   has_many :products, dependent: :destroy
   has_many :manage_users
+  has_many :comments
   before_save { self.email = email.downcase }
   mount_uploader :picture, PictureUploader
 

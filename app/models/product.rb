@@ -11,7 +11,6 @@
 #  user_id             :integer
 #  quantity            :integer
 #  unit_price          :decimal(, )
-#  state_product       :integer
 #  total               :decimal(, )
 #  new_used            :integer
 #  created_at          :datetime         not null
@@ -30,6 +29,18 @@ class Product < ActiveRecord::Base
     has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100#" }, 
     :default_url => "/images/:style/missing.png"
   	validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+
+    has_attached_file :avatar2, :styles => { :medium => "300x300>", :thumb => "100x100#" }, 
+    :default_url => "/images/:style/missing.png"
+  	validates_attachment_content_type :avatar2, :content_type => /\Aimage\/.*\Z/
+
+    has_attached_file :avatar3, :styles => { :medium => "300x300>", :thumb => "100x100#" }, 
+    :default_url => "/images/:style/missing.png"
+  	validates_attachment_content_type :avatar3, :content_type => /\Aimage\/.*\Z/
+
+    has_attached_file :avatar4, :styles => { :medium => "300x300>", :thumb => "100x100#" }, 
+    :default_url => "/images/:style/missing.png"
+  	validates_attachment_content_type :avatar4, :content_type => /\Aimage\/.*\Z/
 
 	def self.search(search)
 		where("name like '%#{search}%' or description like '%#{search}%'")

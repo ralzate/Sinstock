@@ -11,7 +11,6 @@
 #  user_id             :integer
 #  quantity            :integer
 #  unit_price          :decimal(, )
-#  state_product       :integer
 #  total               :decimal(, )
 #  new_used            :integer
 #  created_at          :datetime         not null

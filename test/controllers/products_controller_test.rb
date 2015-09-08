@@ -18,7 +18,7 @@ class ProductsControllerTest < ActionController::TestCase
 
   test "should create product" do
     assert_difference('Product.count') do
-      post :create, product: { description: @product.description, name: @product.name, new_used: @product.new_used, price: @product.price, quantity: @product.quantity, reference: @product.reference, state_product: @product.state_product, stock: @product.stock, total: @product.total, type_product_id: @product.type_product_id, unit_price: @product.unit_price, user_id: @product.user_id }
+      post :create, product: { description: @product.description, name: @product.name, new_used: @product.new_used, price: @product.price, quantity: @product.quantity, reference: @product.reference, stock: @product.stock, total: @product.total, type_product_id: @product.type_product_id, unit_price: @product.unit_price, user_id: @product.user_id }
     end
 
     assert_redirected_to product_path(assigns(:product))
@@ -35,7 +35,7 @@ class ProductsControllerTest < ActionController::TestCase
   end
 
   test "should update product" do
-    patch :update, id: @product, product: { description: @product.description, name: @product.name, new_used: @product.new_used, price: @product.price, quantity: @product.quantity, reference: @product.reference, state_product: @product.state_product, stock: @product.stock, total: @product.total, type_product_id: @product.type_product_id, unit_price: @product.unit_price, user_id: @product.user_id }
+    patch :update, id: @product, product: { description: @product.description, name: @product.name, new_used: @product.new_used, price: @product.price, quantity: @product.quantity, reference: @product.reference, stock: @product.stock, total: @product.total, type_product_id: @product.type_product_id, unit_price: @product.unit_price, user_id: @product.user_id }
     assert_redirected_to product_path(assigns(:product))
   end
 

@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get 'pages/contact'
   get 'pages/help'
   get 'pages/treeview'
-  get 'closed_projects' => 'pages#treeview', as: 'closed_projects'
+  get 'mapa_sitio' => 'pages#treeview', as: 'mapa_sitio'
 
   root to: 'pages#home'
 

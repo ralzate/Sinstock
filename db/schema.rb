@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150907132949) do
+ActiveRecord::Schema.define(version: 20150908154633) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,16 +96,6 @@ ActiveRecord::Schema.define(version: 20150907132949) do
   add_index "mailboxer_receipts", ["notification_id"], name: "index_mailboxer_receipts_on_notification_id", using: :btree
   add_index "mailboxer_receipts", ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type", using: :btree
 
-  create_table "manage_users", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "rol_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "manage_users", ["rol_id"], name: "index_manage_users_on_rol_id", using: :btree
-  add_index "manage_users", ["user_id"], name: "index_manage_users_on_user_id", using: :btree
-
   create_table "products", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
@@ -115,15 +105,26 @@ ActiveRecord::Schema.define(version: 20150907132949) do
     t.integer  "user_id"
     t.integer  "quantity"
     t.decimal  "unit_price"
-    t.integer  "state_product"
     t.decimal  "total"
     t.integer  "new_used"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "avatar2_file_name"
+    t.string   "avatar2_content_type"
+    t.integer  "avatar2_file_size"
+    t.datetime "avatar2_updated_at"
+    t.string   "avatar3_file_name"
+    t.string   "avatar3_content_type"
+    t.integer  "avatar3_file_size"
+    t.datetime "avatar3_updated_at"
+    t.string   "avatar4_file_name"
+    t.string   "avatar4_content_type"
+    t.integer  "avatar4_file_size"
+    t.datetime "avatar4_updated_at"
   end
 
   add_index "products", ["type_product_id"], name: "index_products_on_type_product_id", using: :btree
@@ -216,8 +217,6 @@ ActiveRecord::Schema.define(version: 20150907132949) do
   add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", column: "conversation_id", name: "mb_opt_outs_on_conversations_id"
   add_foreign_key "mailboxer_notifications", "mailboxer_conversations", column: "conversation_id", name: "notifications_on_conversation_id"
   add_foreign_key "mailboxer_receipts", "mailboxer_notifications", column: "notification_id", name: "receipts_on_notification_id"
-  add_foreign_key "manage_users", "roles"
-  add_foreign_key "manage_users", "users"
   add_foreign_key "products", "type_products"
   add_foreign_key "products", "users"
   add_foreign_key "users", "roles"

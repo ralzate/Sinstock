@@ -75,3 +75,9 @@ group :test do
 end
 gem 'delayed_job_active_record'
 gem 'mailboxer'
+gem 'pry-rails'
+gem 'better_errors'
+gem 'ransack'
+gem 'populator'
+gem 'jasny-bootstrap-rails'
+

@@ -1,54 +1,638 @@
-<td><%= link_to image_tag(@product.avatar, size:'40x40'), @product, :remote => true,  :rel => "tooltip", :title => "Mostrar", :class => 'btn btn-link' %></td> 
 
-<p>
-  <strong>Nombre:</strong>
-  <%= @product.name %>
-</p>
+<style type="text/css">
+  
+  /*********************************************
+          Call Bootstrap
+*********************************************/
 
-<p>
-  <strong>Descripción:</strong>
-  <%= @product.description %>
-</p>
+@import url("bootstrap/bootstrap.min.css");
+@import url("bootstrap-override.css");
+@import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
 
-<p>
-  <strong>Stock:</strong>
-  <%= @product.stock %>
-</p>
+/*********************************************
+            Theme Elements
+*********************************************/
 
-<p>
-  <strong>Referencia:</strong>
-  <%= @product.reference %>
-</p>
+.gold{
+  color: #FFBF00;
+}
 
-<p>
-  <strong>Tipo Producto:</strong>
-  <%= @product.type_product_id %>
-</p>
+/*********************************************
+          PRODUCTS
+*********************************************/
 
-<p>
-  <strong>Estado Producto:</strong>
-  <%= @product.state_product %>
-</p>
+.product{
+  border: 1px solid #dddddd;
+  height: 321px;
+}
 
-<p>
-  <strong>Cantidad:</strong>
-  <%= @product.quantity %>
-</p>
+.product>img{
+  max-width: 230px;
+}
 
-<p>
-  <strong>Precio Por unidad:</strong>
-  <%= @product.unit_price %>
-</p>
+.product-rating{
+  font-size: 20px;
+  margin-bottom: 25px;
+}
+
+.product-title{
+  font-size: 20px;
+}
+
+.product-desc{
+  font-size: 14px;
+}
+
+.product-price{
+  font-size: 22px;
+}
+
+.product-stock{
+  color: #74DF00;
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.danger{
+  color:red !important;
+}
+
+.product-info{
+    margin-top: 50px;
+}
+
+/*********************************************
+          VIEW
+*********************************************/
+
+.content-wrapper {
+  max-width: 1140px;
+  background: #fff;
+  margin: 0 auto;
+  margin-top: 25px;
+  margin-bottom: 10px;
+  border: 0px;
+  border-radius: 0px;
+}
+
+.container-fluid{
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.view-wrapper {
+  float: right;
+  max-width: 70%;
+  margin-top: 25px;
+}
+
+.container {
+  padding-left: 0px;
+  padding-right: 0px;
+  max-width: 100%;
+}
+
+/*********************************************
+        ITEM 
+*********************************************/
+
+.service1-items {
+  padding: 0px 0 0px 0;
+  float: left;
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+  height: 321px;
+  width: 130px;
+}
+
+.service1-item {
+  height: 107px;
+  width: 120px;
+  display: block;
+  float: left;
+  position: relative;
+  padding-right: 20px;
+  border-right: 1px solid #DDD;
+  border-top: 1px solid #DDD;
+  border-bottom: 1px solid #DDD;
+}
+
+.service1-item > img {
+  max-height: 110px;
+  max-width: 110px;
+  opacity: 0.6;
+  transition: all .2s ease-in;
+  -o-transition: all .2s ease-in;
+  -moz-transition: all .2s ease-in;
+  -webkit-transition: all .2s ease-in;
+}
+
+.service1-item > img:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.service-image-left {
+  padding-right: 50px;
+}
+
+.service-image-right {
+  padding-left: 50px;
+}
+
+.service-image-left > center > img,.service-image-right > center > img{
+  max-height: 155px;
+}
 
 
-<p>
-  <strong>Nuevo / Usado:</strong>
-  <%= @product.new_used %>
-</p>
+</style>
 
-<p>
-  <strong>Total:</strong>
-  <%= @product.total %>
-</p>
 
-<%= link_to 'Atras', products_path %>
+<style type="text/css">
+  body { padding-top: 50px; }
+
+#myCarousel .carousel-caption {
+    left:0;
+  right:0;
+  bottom:0;
+  text-align:left;
+  padding:10px;
+  background:rgba(0,0,0,0.6);
+  text-shadow:none;
+}
+
+#myCarousel .list-group {
+  position:absolute;
+  top:0;
+  right:0;
+}
+#myCarousel .list-group-item {
+  border-radius:0px;
+  cursor:pointer;
+}
+#myCarousel .list-group .active {
+  background-color:#eee;  
+}
+
+@media (min-width: 992px) { 
+  #myCarousel {padding-right:33.3333%;}
+  #myCarousel .carousel-controls {display:none;}  
+}
+@media (max-width: 991px) { 
+  .carousel-caption p,
+  #myCarousel .list-group {display:none;} 
+}
+
+.list-group-item{
+  height: 98px !important;
+  width: 100px;
+}
+</style>
+
+<script type="text/javascript">
+  
+  $(document).ready(function(){
+    
+  var clickEvent = false;
+  $('#myCarousel').carousel({
+    interval:   4000  
+  }).on('click', '.list-group li', function() {
+      clickEvent = true;
+      $('.list-group li').removeClass('active');
+      $(this).addClass('active');   
+  }).on('slid.bs.carousel', function(e) {
+    if(!clickEvent) {
+      var count = $('.list-group').children().length -1;
+      var current = $('.list-group li.active');
+      current.removeClass('active').next().addClass('active');
+      var id = parseInt(current.data('slide-to'));
+      if(count == id) {
+        $('.list-group li').first().addClass('active'); 
+      }
+    }
+    clickEvent = false;
+  });
+})
+
+$(window).load(function() {
+    var boxheight = $('#myCarousel .carousel-inner').innerHeight();
+    var itemlength = $('#myCarousel .item').length;
+    var triggerheight = Math.round(boxheight/itemlength+1);
+  $('#myCarousel .list-group-item').outerHeight(triggerheight);
+});
+</script>
+
+<div class="container-fluid">
+    <div class="content-wrapper"> 
+    <div class="item-container">  
+      <div class="container"> 
+
+<div class="container">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner">
+      
+        <div class="item active">
+          <%= link_to image_tag(@product.avatar, size:'275x275'), @product, :remote => true,  :rel => "tooltip", :title => "Mostrar", :class => 'btn btn-link' %>
+           <div class="carousel-caption">
+            <h4><%= link_to image_tag(@product.avatar, size:'40x40'), @product, :remote => true,  :rel => "tooltip", :title => "Mostrar", :class => 'btn btn-link' %></h4>
+          </div>
+        </div><!-- End Item -->
+ 
+         <div class="item">
+          <%= link_to image_tag(@product.avatar2, size:'275x275'), @product, :remote => true,  :rel => "tooltip", :title => "Mostrar", :class => 'btn btn-link' %>
+           <div class="carousel-caption">
+            <h4><%= link_to image_tag(@product.avatar2, size:'40x40'), @product, :remote => true,  :rel => "tooltip", :title => "Mostrar", :class => 'btn btn-link' %></h4>
+            
+          </div>
+        </div><!-- End Item -->
+        
+        <div class="item">
+          <%= link_to image_tag(@product.avatar3, size:'275x275'), @product, :remote => true,  :rel => "tooltip", :title => "Mostrar", :class => 'btn btn-link' %>
+           <div class="carousel-caption">
+            <h4><%= link_to image_tag(@product.avatar3, size:'40x40'), @product, :remote => true,  :rel => "tooltip", :title => "Mostrar", :class => 'btn btn-link' %></h4>
+          </div>
+        </div><!-- End Item -->
+        
+        <div class="item">
+          <%= link_to image_tag(@product.avatar4, size:'275x275'), @product, :remote => true,  :rel => "tooltip", :title => "Mostrar", :class => 'btn btn-link' %>
+           <div class="carousel-caption">
+            <h4><%= link_to image_tag(@product.avatar4, size:'40x40'), @product, :remote => true,  :rel => "tooltip", :title => "Mostrar", :class => 'btn btn-link' %></h4>
+          </div>
+        </div><!-- End Item -->
+
+        
+                
+      </div><!-- End Carousel Inner -->
+
+
+    <ul class="list-group col-sm-4">
+      <li data-target="#myCarousel" data-slide-to="0" class="list-group-item active">
+      <h4><%= link_to image_tag(@product.avatar, size:'40x40'), @product, :class => 'btn btn-link' %></h4></li>
+      <li data-target="#myCarousel" data-slide-to="1" class="list-group-item"><h4><%= link_to image_tag(@product.avatar2, size:'40x40'), @product, :class => 'btn btn-link' %></h4></li>
+      <li data-target="#myCarousel" data-slide-to="2" class="list-group-item"><h4><%= link_to image_tag(@product.avatar3, size:'40x40'), @product, :class => 'btn btn-link' %></h4></li>
+      <li data-target="#myCarousel" data-slide-to="3" class="list-group-item"><h4><%= link_to image_tag(@product.avatar4, size:'40x40'), @product, :class => 'btn btn-link' %></h4></li>
+    </ul>
+
+      <!-- Controls -->
+      <div class="carousel-controls">
+          <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+          </a>
+          <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+          </a>
+      </div>
+
+    </div><!-- End Carousel -->
+</div>
+
+
+
+
+
+          
+        <div class="col-md-7">
+          <div class="product-title"><%= @product.name %></div>
+          <div class="product-desc"><%= @product.description %></div>
+          <div class="product-rating"><i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star-o"></i> </div>
+          <hr>
+          <div class="product-price">$<%= @product.unit_price %></div>
+          <% if @product.stock != 0 %>
+          <div class="product-stock">Hay unidades disponibles</div>
+          <% else %>
+          <div class="product-stock danger">No hay unidades disponibles</div>
+          <% end %>
+          <hr>
+          <div class="btn-group cart">
+            <button type="button" class="btn btn-success">
+              Estoy interesado
+            </button>
+          </div>
+          <div class="btn-group wishlist">
+              <%= link_to 'Regresar', root_path, :class => 'btn btn-danger' %>
+          </div>
+        </div>
+      </div> 
+    </div>
+    <div class="container-fluid">   
+      <div class="col-md-12 product-info">
+          <ul id="myTab" class="nav nav-tabs nav_tabs">
+            
+            <li class="active"><a href="#service-one" data-toggle="tab">Descripción</a></li>
+            <li><a href="#service-two" data-toggle="tab">Información del Producto</a></li>
+            <li><a href="#service-three" data-toggle="tab">Preguntas</a></li>
+            
+          </ul>
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade in active" id="service-one">
+             
+              <section class="container product-info">
+
+
+                <h3>Descripción de: <%= @product.name %></h3>
+                <%= @product.description %>
+              </section>
+                      
+            </div>
+          <div class="tab-pane fade" id="service-two">
+            
+            <section class="container">
+                
+
+
+
+<style type="text/css">
+  @import url("http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css");
+@import url("http://fonts.googleapis.com/css?family=Roboto:400,300,700italic,700,500&subset=latin,latin-ext");
+
+body {
+        padding-top: 40px;
+        padding-bottom: 40px;
+      
+      }
+  
+  /* COMMON PRICING STYLES */
+    .panel.price,
+    .panel.price>.panel-heading{
+      border-radius:0px;
+       -moz-transition: all .3s ease;
+      -o-transition:  all .3s ease;
+      -webkit-transition:  all .3s ease;
+    }
+    .panel.price:hover{
+      box-shadow: 0px 0px 30px rgba(0,0,0, .2);
+    }
+    .panel.price:hover>.panel-heading{
+      box-shadow: 0px 0px 30px rgba(0,0,0, .2) inset;
+    }
+    
+        
+    .panel.price>.panel-heading{
+      box-shadow: 0px 5px 0px rgba(50,50,50, .2) inset;
+      text-shadow:0px 3px 0px rgba(50,50,50, .6);
+    }
+      
+    .price .list-group-item{
+      border-bottom-:1px solid rgba(250,250,250, .5);
+    }
+    
+    .panel.price .list-group-item:last-child {
+      border-bottom-right-radius: 0px;
+      border-bottom-left-radius: 0px;
+    }
+    .panel.price .list-group-item:first-child {
+      border-top-right-radius: 0px;
+      border-top-left-radius: 0px;
+    }
+    
+    .price .panel-footer {
+      color: #fff;
+      border-bottom:0px;
+      background-color:  rgba(0,0,0, .1);
+      box-shadow: 0px 3px 0px rgba(0,0,0, .3);
+    }
+    
+    
+    .panel.price .btn{
+      box-shadow: 0 -1px 0px rgba(50,50,50, .2) inset;
+      border:0px;
+    }
+    
+  /* green panel */
+  
+    
+    .price.panel-green>.panel-heading {
+      color: #fff;
+      background-color: #57AC57;
+      border-color: #71DF71;
+      border-bottom: 1px solid #71DF71;
+    }
+    
+      
+    .price.panel-green>.panel-body {
+      color: #fff;
+      background-color: #65C965;
+    }
+        
+    
+    .price.panel-green>.panel-body .lead{
+        text-shadow: 0px 3px 0px rgba(50,50,50, .3);
+    }
+    
+    .price.panel-green .list-group-item {
+      color: #333;
+      background-color: rgba(50,50,50, .01);
+      font-weight:600;
+      text-shadow: 0px 1px 0px rgba(250,250,250, .75);
+    }
+    
+    /* blue panel */
+  
+    
+    .price.panel-blue>.panel-heading {
+      color: #fff;
+      background-color: #608BB4;
+      border-color: #78AEE1;
+      border-bottom: 1px solid #78AEE1;
+    }
+    
+      
+    .price.panel-blue>.panel-body {
+      color: #fff;
+      background-color: #73A3D4;
+    }
+        
+    
+    .price.panel-blue>.panel-body .lead{
+        text-shadow: 0px 3px 0px rgba(50,50,50, .3);
+    }
+    
+    .price.panel-blue .list-group-item {
+      color: #333;
+      background-color: rgba(50,50,50, .01);
+      font-weight:600;
+      text-shadow: 0px 1px 0px rgba(250,250,250, .75);
+    }
+    
+    /* red price */
+    
+  
+    .price.panel-red>.panel-heading {
+      color: #fff;
+      background-color: #D04E50;
+      border-color: #FF6062;
+      border-bottom: 1px solid #FF6062;
+    }
+    
+      
+    .price.panel-red>.panel-body {
+      color: #fff;
+      background-color: #EF5A5C;
+    }
+    
+    
+    
+    
+    .price.panel-red>.panel-body .lead{
+        text-shadow: 0px 3px 0px rgba(50,50,50, .3);
+    }
+    
+    .price.panel-red .list-group-item {
+      color: #333;
+      background-color: rgba(50,50,50, .01);
+      font-weight:600;
+      text-shadow: 0px 1px 0px rgba(250,250,250, .75);
+    }
+    
+    /* grey price */
+    
+  
+    .price.panel-grey>.panel-heading {
+      color: #fff;
+      background-color: #6D6D6D;
+      border-color: #B7B7B7;
+      border-bottom: 1px solid #B7B7B7;
+    }
+    
+      
+    .price.panel-grey>.panel-body {
+      color: #fff;
+      background-color: #808080;
+    }
+    
+
+    
+    .price.panel-grey>.panel-body .lead{
+        text-shadow: 0px 3px 0px rgba(50,50,50, .3);
+    }
+    
+    .price.panel-grey .list-group-item {
+      color: #333;
+      background-color: rgba(50,50,50, .01);
+      font-weight:600;
+      text-shadow: 0px 1px 0px rgba(250,250,250, .75);
+    }
+    
+    /* white price */
+    
+  
+    .price.panel-white>.panel-heading {
+      color: #333;
+      background-color: #f9f9f9;
+      border-color: #ccc;
+      border-bottom: 1px solid #ccc;
+      text-shadow: 0px 2px 0px rgba(250,250,250, .7);
+    }
+    
+    .panel.panel-white.price:hover>.panel-heading{
+      box-shadow: 0px 0px 30px rgba(0,0,0, .05) inset;
+    }
+      
+    .price.panel-white>.panel-body {
+      color: #fff;
+      background-color: #dfdfdf;
+    }
+        
+    .price.panel-white>.panel-body .lead{
+        text-shadow: 0px 2px 0px rgba(250,250,250, .8);
+        color:#666;
+    }
+    
+    .price:hover.panel-white>.panel-body .lead{
+        text-shadow: 0px 2px 0px rgba(250,250,250, .9);
+        color:#333;
+    }
+    
+    .price.panel-white .list-group-item {
+      color: #333;
+      background-color: rgba(50,50,50, .01);
+      font-weight:600;
+      text-shadow: 0px 1px 0px rgba(250,250,250, .75);
+    }
+
+</style>
+
+
+
+    <div class="container">
+            <div class="row">
+
+        
+
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          
+            <!-- PRICE ITEM -->
+            <div class="panel price panel-green">
+
+              <div class="panel-body text-center">
+                <p class="lead" style="font-size:40px"><h3>Datos de Producto <%= @product.name %></h3></p>
+              </div>
+
+
+                <div class="well">
+
+              <table class="table table-striped table-bordered">
+                <thead>
+                  <tr>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Stock</th>
+                    <th>Referencia</th>
+                    <th>Tipo Producto</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                    <th>Nuevo Usado</th>
+                    <th>Total</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                      <td><%= @product.name %></td>
+                      <td><%= @product.description %></td>
+                      <td><%= @product.stock %></td>
+                      <td><%= @product.reference %></td>
+                      <td><%= @product.type_product_id %></td>
+                      <td><%= @product.quantity %></td>
+                      <td><%= @product.unit_price %></td>
+                      <td><%= @product.new_used %></td>
+                      <td><%= @product.total %></td>
+                    </tr>
+                </tbody>
+              </table>
+              </div>
+                <a class="btn btn-lg btn-block btn-success" href="#">BUY NOW!</a>
+            </div>
+            <!-- /PRICE ITEM -->
+            </div>
+        </div>
+        </div>
+            </section>
+          </div>
+          <div class="tab-pane fade" id="service-three">             
+            <section class="container">
+
+              <% if current_user %>
+                <h3 class="comment-section-header">Preguntas:</h3>
+                <!-- renders the _comment.html.erb partial file. -->
+                <p><%= render @product.comments %></p>
+
+                <h3 class="reply-to-msg">Escribe tu Pregunta:</h3>
+                <!-- renders the comments form -->
+                <%= render 'comments/form' %>
+                <% else %>
+
+                <h3>Necesitas Loguearte para Preguntar, <%= link_to 'Login', login_path %></h3>
+                
+                <% end %>
+            </section>     
+          </div>
+        </div>
+        <hr>
+      </div>
+    </div>
+  </div>
+</div>

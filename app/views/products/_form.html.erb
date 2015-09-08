@@ -10,96 +10,182 @@ $(document).ready(function () {
 });
 </script>
 
-    <div class="user">
-      <div class="modal-header">
-        <h4 class="modal-title"><h3>Datos para los Productos</h3></h4>
-      </div><br>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="col-sm-10">
-                    <%= f.label :Nombre %>
-                    <%= f.text_field :name, class: "form-control" %>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="col-sm-10">
-                    <%= f.label :Descripcion %>
-                    <%= f.text_field :description, class: "form-control" %>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="col-sm-10">
-                    <%= f.label :Stock %>
-                    <%= f.text_field :stock, class: "form-control" %>
+
+<div class="container">
+        <div class="row centered-form ">
+        <div class="col-xs-12 col-sm-8 col-md-12 ">
+            <div class="panel panel-default">
+                        <div class="panel-heading">
+                        <h3 class="panel-title">Datos para los Productos:</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="input-container">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">Nombre:</span>
+                                            <%= f.text_field :name, class: "form-control valid" %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="input-container">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">Stock:</span>
+                                            <%= f.number_field :stock, class: "form-control valid" %>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                                            <div class="col-md-6">
+                                    <div class="input-container">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">Cantidad:</span>
+                                            <%= f.number_field :quantity, class: "form-control valid", id: 'txt1' %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="input-container">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">Referencia:</span>
+                                            <%= f.text_field :reference, class: "form-control valid" %>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <br/>
+                            <div class="row">
+
+                                                           <div class="col-md-6">
+                                    <div class="input-container">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">Nuevo Usado:</span>
+                                             <%= f.input :new_used,
+                                                  prompt:       '-- Seleccionar --',
+                                                  collection: @product.select_new_used.sort,
+                                                  error: false, label: false, 
+                                                  input_html:   {class: 'form-control'} %>
+                                        </div>
+                                    </div>
+                                </div>
+                                                                
+                                <div class="col-md-6">
+                                    <div class="input-container">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">Tipo Producto:</span>
+                                            <%= f.collection_select :type_product_id, TypeProduct.all, :id, :name, { prompt: "Por favor selecciona uno", :selected => params[:search], hide_label: :true }, class: "input-sm" %> 
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="input-container">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">Precio Unitario:</span>
+                                            <%= f.number_field :unit_price, class: "form-control valid", id: 'txt2' %>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="input-container">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">Total:</span>
+                                            <%= f.number_field :total, class: "form-control valid", id: 'Total' %>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                    <div class="col-md-12">
+                                    <div class="input-container">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">Descripción:</span>
+                                            <%= f.text_area :description, class: "form-control valid" %>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="panel panel-default">
+                            <!-- Default panel contents -->
+                            <div class="panel-heading">Sube las Imagenes</div>
+                            <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="input-container">
+                                        <div class="fileinput fileinput-new" data-provides="fileinput">
+                                          <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"></div>
+                                          <div>
+                                            <span class="btn btn-default btn-file"><span class="fileinput-new"><%= f.file_field :avatar, class: "form-control", id: 'button' %></span><span class="fileinput-exists">Cambiar</span><input type="file" name="..."></span>
+                                            <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Eliminar</a>
+                                          </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="input-container">
+                                        <div class="fileinput fileinput-new" data-provides="fileinput">
+                                          <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"></div>
+                                          <div>
+                                            <span class="btn btn-default btn-file"><span class="fileinput-new"><%= f.file_field :avatar2, class: "form-control" %></span><span class="fileinput-exists">Cambiar</span><input type="file" name="..."></span>
+                                            <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Eliminar</a>
+                                          </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="input-container">
+                                        <div class="fileinput fileinput-new" data-provides="fileinput">
+                                          <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"></div>
+                                          <div>
+                                            <span class="btn btn-default btn-file"><span class="fileinput-new"><%= f.file_field :avatar3, class: "form-control" %></span><span class="fileinput-exists">Cambiar</span><input type="file" name="..."></span>
+                                            <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Eliminar</a>
+                                          </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="input-container">
+                                        <div class="fileinput fileinput-new" data-provides="fileinput">
+                                          <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"></div>
+                                          <div>
+                                            <span class="btn btn-default btn-file"><span class="fileinput-new"><%= f.file_field :avatar4, class: "form-control" %></span><span class="fileinput-exists">Cambiar</span><input type="file" name="..."></span>
+                                            <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Eliminar</a>
+                                          </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <%= f.hidden_field :user_id, :value => current_user.id %>
+                            </div>
+                            </div>
+
+                            </div>
+ 
+                        </div>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="col-sm-10">
-                    <%= f.label :Referencia %>
-                    <%= f.text_field :reference, class: "form-control" %>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="col-sm-10">
-                    <%= f.label :Tipo_Producto %>
-                    <%= f.collection_select :type_product_id, TypeProduct.all, :id, :name, { prompt: "Por favor selecciona uno", :selected => params[:search], hide_label: :true }, class: "input-sm" %> 
+    </div>
 
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="col-sm-10">
-                    <%= f.label :Estado_Del_Producto %>
-                    <%= f.input :state_product,
-                      prompt:       '-- Seleccionar --',
-                      collection: @product.select_state_product.sort,
-                      error: false, label: false, 
-                      input_html:   {class: 'form-control'} %>
-                </div>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="col-md-4">
-                <div class="col-sm-10">
-                    <%= f.input :quantity, class: "form-control", :label => "Cantidad:",  :input_html => {  :id => "txt1" } %>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="col-sm-10">
-                    <%= f.input :unit_price, class: "form-control", :label => "Precio:", :required => true,  :input_html => {  :id => "txt2"} %>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="col-sm-10">
-                    <%= f.input :total, class: "form-control", :label => "Total:", :required => true,  :input_html => {  :id => "txt3"}, :readonly => true %>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-4">
-                <div class="col-sm-10">
-                    <%= f.label :Nuevo_Usado %>
-                    <%= f.input :new_used,
-                      prompt:       '-- Seleccionar --',
-                      collection: @product.select_new_used.sort,
-                      error: false, label: false, 
-                      input_html:   {class: 'form-control'} %>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="col-sm-10">
-                    <%= f.file_field :avatar, class: "help-block" %>                
-                </div>
-            </div>
-        </div>
-
-           <%= f.hidden_field :user_id, :value => current_user.id %>
-
-        </div>
 
     <%= f.submit "Guardar", :class => 'btn btn-primary' %>
     <a href="#" class="btn btn-default" onclick="$.lazybox.close()">Cerrar</a>
 <% end %>
+
+
+
+

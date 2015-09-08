@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   include UsersHelper
-  before_filter :require_login
+  #before_filter :require_login
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
 
   # Prevent CSRF attacks by raising an exception.

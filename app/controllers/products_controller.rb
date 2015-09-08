@@ -2,7 +2,14 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    @products = Product.search(params[:search]).page(params[:page]).per_page(10)
+    if current_user
+            @products = Product.search(params[:search]).page(params[:page]).per_page(10).where user_id: current_user.id
+ 
+    else
+          redirect_to root_path
+
+    end
+
   end
 
   def show
@@ -55,6 +62,6 @@ class ProductsController < ApplicationController
     end
 
     def product_params
-      params.require(:product).permit(:name, :description, :stock, :reference, :type_product_id, :user_id, :quantity, :unit_price, :state_product, :total, :new_used, :avatar)
+      params.require(:product).permit(:name, :description, :stock, :reference, :type_product_id, :user_id, :quantity, :unit_price, :total, :new_used, :avatar, :avatar2, :avatar3, :avatar4)
     end
 end
